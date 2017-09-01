@@ -66,31 +66,29 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['text'] = "Server room temp : \n".$arrTemp[0]." °C";
   }
   else if(strtoupper($_msg) == "IMGX")
-  {    
-$url = "https://api.netpie.io/topic/SmartOfficeNSET/Air_PAC101_8_CTRL?retain&auth=wA56JsTLlI8BYum:mKOwmYroqEtRcputGE0DxN5b3";    
-$content = json_encode("PWR_ON");
+  {   
+    // The message
+    $message = "PWR_ON";
 
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_HEADER, false);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_HTTPHEADER,
-        array("Content-type: application/json"));
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+    // Get the curl resource handle
+    $session = curl_init("https://api.netpie.io/topic/SmartOfficeNSET/Air_PAC101_8_CTRL?retain&auth=wA56JsTLlI8BYum:mKOwmYroqEtRcputGE0DxN5b3");
 
-$json_response = curl_exec($curl);
+    // Prepare message for PUT
+    $put_data = tmpfile(); //Get temporary filehandle
+    fwrite($put_data, $message); //Write the string to the temporary file
+    fseek($put_data, 0); //Put filepointer to the beginning of the temporary file
 
-$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    // Set the POST options
+    curl_setopt($session, CURLOPT_PUT, true); // Use PUT
+    curl_setopt($session, CURLOPT_HEADER, true); // Send header
+    curl_setopt($session, CURLOPT_RETURNTRANSFER, true); // Get response
+    curl_setopt($session, CURLOPT_INFILE, $put_data); // Set string data
+    curl_setopt($session, CURLOPT_INFILESIZE, strlen($message)); //Set data size
 
-if ( $status != 201 ) {
-    die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-}
-
-
-curl_close($curl);
-
-$response = json_decode($json_response, true);
-   
+    // Do the PUT and show the response
+    $response = curl_exec($session);
+    echo $response;
+    
   }
     else{
     $arrPostData = array();
