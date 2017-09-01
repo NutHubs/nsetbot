@@ -70,7 +70,9 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "image";
-    $arrPostData['messages'][0]['image'] = "https://cdn.dribbble.com/users/100203/screenshots/2645012/botlist-logo_1x.png";
+    $arrPostData['messages'][0]['originalUrl'] = "https://cdn.dribbble.com/users/100203/screenshots/2645012/botlist-logo_1x.png";
+    $arrPostData['messages'][0]['previewUrl'] = "https://cdn.dribbble.com/users/100203/screenshots/2645012/botlist-logo_1x.png";
+   
   }
     else{
     $arrPostData = array();
