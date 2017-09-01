@@ -67,11 +67,29 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   }
   else if(strtoupper($_msg) == "IMGX")
   {    
-    $arrPostData = array();
-    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    $arrPostData['messages'][0]['type'] = "image";
-    $arrPostData['messages'][0]['originalUrl'] = "https://cdn.dribbble.com/users/100203/screenshots/2645012/botlist-logo_1x.png";
-    $arrPostData['messages'][0]['previewUrl'] = "https://cdn.dribbble.com/users/100203/screenshots/2645012/botlist-logo_1x.png";
+$url = "https://api.netpie.io/topic/SmartOfficeNSET/Air_PAC101_8_CTRL?retain&auth=wA56JsTLlI8BYum:mKOwmYroqEtRcputGE0DxN5b3";    
+$content = json_encode("PWR_ON");
+
+$curl = curl_init($url);
+curl_setopt($curl, CURLOPT_HEADER, false);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER,
+        array("Content-type: application/json"));
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+$json_response = curl_exec($curl);
+
+$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+if ( $status != 201 ) {
+    die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+}
+
+
+curl_close($curl);
+
+$response = json_decode($json_response, true);
    
   }
     else{
