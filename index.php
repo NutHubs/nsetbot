@@ -65,6 +65,13 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = "Server room temp : \n".$arrTemp[0]." °C";
   }
+  else if(strtoupper($_msg) == "IMGX")
+  {    
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "image";
+    $arrPostData['messages'][0]['image'] = "https://cdn.dribbble.com/users/100203/screenshots/2645012/botlist-logo_1x.png";
+  }
     else{
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
