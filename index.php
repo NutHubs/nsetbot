@@ -68,7 +68,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   }
   else if(strtoupper($_msg) == "IMGX")
   {   
-    header( "location: control_air.html" );
+    echo airControl();
 	  
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
@@ -96,3 +96,29 @@ curl_setopt($channel, CURLOPT_SSL_VERIFYPEER, false);
 $result = curl_exec($channel);
 curl_close ($channel);
 ?>
+
+<script>
+
+	function airControl()
+	{
+    const APPKEY = 'wA56JsTLlI8BYum';
+    const APPSECRET = 'mKOwmYroqEtRcputGE0DxN5b3';
+    const APPID = 'SmartOfficeNSET';
+    var microgear = Microgear.create({
+	gearkey: APPKEY,
+	gearsecret: APPSECRET,
+        alias: 'LineBotCommand'
+    });
+    
+    microgear.on('message', function(topic,data) {      
+         document.getElementById("statusX").innerHTML = data;
+    });
+    microgear.on('connected', function() {
+	microgear.setname('LineBotCommand');
+	microgear.chat('Air_PAC101_8_CTRL','PWR_ON');
+    });
+    microgear.resettoken();
+    microgear.connect(APPID);
+	}
+	
+</script>
