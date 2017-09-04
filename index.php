@@ -68,7 +68,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   }
   else if(strtoupper($_msg) == "IMGX")
   {   
-    echo airControl();
+     echo '<script> airControl(); </script>';
 	  
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
