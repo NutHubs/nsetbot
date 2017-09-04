@@ -1,3 +1,5 @@
+<html>
+<head>
 <script src="https://cdn.netpie.io/microgear.js"></script>
 <script type="text/javascript">
 
@@ -24,7 +26,8 @@ function airControl()
 }
 	
 </script>
-
+</head>
+<body>
 <?php
 
 $strAccessToken = "6qu1XX+9fv8jsUMRV39GsMvl9qiO/RHYpkSH6H2DDEs4xPJ+TL5jSuB6vCpvxEEFXSZOQUs5DmFz8i938BpzeYuWnsIUkRooWQJmVr4Def9WAgyIvrbk+fSfdtlcxt9pc2qNTUF0CsaHVLHYOCIDJAdB04t89/1O/w1cDnyilFU=";
@@ -123,4 +126,6 @@ curl_setopt($channel, CURLOPT_SSL_VERIFYPEER, false);
 $result = curl_exec($channel);
 curl_close ($channel);
 ?>
+</body>
+</html>
 
