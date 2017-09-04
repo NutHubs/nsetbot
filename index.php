@@ -88,7 +88,11 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $data_string = "PWR_ON";
     
     $url = "https://api.netpie.io/topic/SmartOfficeNSET/Air_PAC101_8_CTRL?retain&auth=wA56JsTLlI8BYum:mKOwmYroqEtRcputGE0DxN5b3";
-    echo $curl->post($url, $data_string);
+    
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = $curl->post($url, $data_string);";
     
   }
     else{
