@@ -1,4 +1,21 @@
 <?php
+
+public function put($url, $data_string){
+
+	$ch = curl_init($url);                                                                      
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT"); 
+	curl_setopt($ch, CURLOPT_FAILONERROR, true);                                                                    
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+		  'Content-Type: application/json',                                                                                
+		  'Content-Length: ' . strlen($data_string))                                                                       
+	);                                                                                                                   
+		 
+	$result = curl_exec($ch);
+	return $result;
+}
+
 $strAccessToken = "6qu1XX+9fv8jsUMRV39GsMvl9qiO/RHYpkSH6H2DDEs4xPJ+TL5jSuB6vCpvxEEFXSZOQUs5DmFz8i938BpzeYuWnsIUkRooWQJmVr4Def9WAgyIvrbk+fSfdtlcxt9pc2qNTUF0CsaHVLHYOCIDJAdB04t89/1O/w1cDnyilFU=";
 $content = file_get_contents('php://input');
 $arrJson = json_decode($content, true);
@@ -68,26 +85,10 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   else if(strtoupper($_msg) == "IMGX")
   {   
     // The message
-    $message = "PWR_ON";
-
-    // Get the curl resource handle
-    $session = curl_init("https://api.netpie.io/topic/SmartOfficeNSET/Air_PAC101_8_CTRL?retain&auth=wA56JsTLlI8BYum:mKOwmYroqEtRcputGE0DxN5b3");
-
-    // Prepare message for PUT
-    $put_data = tmpfile(); //Get temporary filehandle
-    fwrite($put_data, $message); //Write the string to the temporary file
-    fseek($put_data, 0); //Put filepointer to the beginning of the temporary file
-
-    // Set the POST options
-    curl_setopt($session, CURLOPT_PUT, true); // Use PUT
-    curl_setopt($session, CURLOPT_HEADER, true); // Send header
-    curl_setopt($session, CURLOPT_RETURNTRANSFER, true); // Get response
-    curl_setopt($session, CURLOPT_INFILE, $put_data); // Set string data
-    curl_setopt($session, CURLOPT_INFILESIZE, strlen($message)); //Set data size
-
-    // Do the PUT and show the response
-    $response = curl_exec($session);
-    echo $response;
+    $data_string = "PWR_ON";
+    
+    $url = "https://api.netpie.io/topic/SmartOfficeNSET/Air_PAC101_8_CTRL?retain&auth=wA56JsTLlI8BYum:mKOwmYroqEtRcputGE0DxN5b3";
+    echo $curl->post($url, $data_string);
     
   }
     else{
