@@ -1,21 +1,5 @@
 <?php
 
-public function put($url, $data_string){
-
-	$ch = curl_init($url);                                                                      
-	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT"); 
-	curl_setopt($ch, CURLOPT_FAILONERROR, true);                                                                    
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-		  'Content-Type: application/json',                                                                                
-		  'Content-Length: ' . strlen($data_string))                                                                       
-	);                                                                                                                   
-		 
-	$result = curl_exec($ch);
-	return $result;
-}
-
 $strAccessToken = "6qu1XX+9fv8jsUMRV39GsMvl9qiO/RHYpkSH6H2DDEs4xPJ+TL5jSuB6vCpvxEEFXSZOQUs5DmFz8i938BpzeYuWnsIUkRooWQJmVr4Def9WAgyIvrbk+fSfdtlcxt9pc2qNTUF0CsaHVLHYOCIDJAdB04t89/1O/w1cDnyilFU=";
 $content = file_get_contents('php://input');
 $arrJson = json_decode($content, true);
@@ -88,11 +72,24 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $data_string = "PWR_ON";
     
     $url = "https://api.netpie.io/topic/SmartOfficeNSET/Air_PAC101_8_CTRL?retain&auth=wA56JsTLlI8BYum:mKOwmYroqEtRcputGE0DxN5b3";
-    
+    	  
+    $ch = curl_init($url);                                                                      
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT"); 
+    curl_setopt($ch, CURLOPT_FAILONERROR, true);                                                                    
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+	'Content-Type: application/json',                                                                                
+	'Content-Length: ' . strlen($data_string))                                                                       
+    );                                                                                                                   
+		 
+    $result = curl_exec($ch);
+	  
+	  
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = $curl->post($url, $data_string);";
+    $arrPostData['messages'][0]['text'] = $result;
     
   }
     else{
