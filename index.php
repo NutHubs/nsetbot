@@ -68,36 +68,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   }
   else if(strtoupper($_msg) == "IMGX")
   {   
-    // The message
-    //$data_string = "PWR_ON";    
-    //$url = "https://api.netpie.io/topic/SmartOfficeNSET/Air_PAC101_8_CTRL?retain&auth=wA56JsTLlI8BYum:mKOwmYroqEtRcputGE0DxN5b3";
-    
-    echo "<script>
-
-    const APPKEY = 'wA56JsTLlI8BYum';
-    const APPSECRET = 'mKOwmYroqEtRcputGE0DxN5b3';
-    const APPID = 'SmartOfficeNSET';
-
-    var microgear = Microgear.create({
-	gearkey: APPKEY,
-	gearsecret: APPSECRET,
-        alias: 'LineBotCommand'
-    });
-    
-    microgear.on('message', function(topic,data) {      
-         
-    });
-
-    microgear.on('connected', function() {
-	microgear.setname('LineBotCommand');
-	microgear.chat('Air_PAC101_8_CTRL','PWR_ON');
-    });
-
-    microgear.resettoken();
-    microgear.connect(APPID);
-	
-</script>";
-    
+    header( "location: control_air.html" );
+	  
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
