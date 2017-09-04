@@ -4,25 +4,20 @@
 <script type="text/javascript">
 
 function airControl()
-{
-    const APPKEY = 'wA56JsTLlI8BYum';
-    const APPSECRET = 'mKOwmYroqEtRcputGE0DxN5b3';
-    const APPID = 'SmartOfficeNSET';
-    var microgear = Microgear.create({
-	gearkey: APPKEY,
-	gearsecret: APPSECRET,
-        alias: 'LineBotCommand'
-    });
-    
-    microgear.on('message', function(topic,data) {      
-         
-    });
-    microgear.on('connected', function() {
-	microgear.setname('LineBotCommand');
-	microgear.chat('Air_PAC101_8_CTRL','PWR_ON');
-    });
-    microgear.resettoken();
-    microgear.connect(APPID);
+{	
+    var APPID= "SmartOfficeNSET"; //enter your appid
+    var KEY = "wA56JsTLlI8BYum"; //enter your key
+    var SECRET = "mKOwmYroqEtRcputGE0DxN5b3"; //enter your secret
+    var Topic = "/Air_PAC101_8_CTRL"; //choose any topic name
+
+    function airControl(){
+        var url = 'https://api.netpie.io/topic/'+APPID+Topic+'?retain&auth=' +KEY+':'+SECRET;
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open('PUT',url,true);
+        xmlHttp.send('ON');
+        window.alert(url);//for debugging purpose
+    }    
+
 }
 	
 </script>
