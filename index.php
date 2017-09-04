@@ -69,27 +69,39 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   else if(strtoupper($_msg) == "IMGX")
   {   
     // The message
-    $data_string = "PWR_ON";
+    //$data_string = "PWR_ON";    
+    //$url = "https://api.netpie.io/topic/SmartOfficeNSET/Air_PAC101_8_CTRL?retain&auth=wA56JsTLlI8BYum:mKOwmYroqEtRcputGE0DxN5b3";
     
-    $url = "https://api.netpie.io/topic/SmartOfficeNSET/Air_PAC101_8_CTRL?retain&auth=wA56JsTLlI8BYum:mKOwmYroqEtRcputGE0DxN5b3";
-    	  
-    $ch = curl_init($url);                                                                      
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT"); 
-    curl_setopt($ch, CURLOPT_FAILONERROR, true);                                                                    
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-	'Content-Type: application/json',                                                                                
-	'Content-Length: ' . strlen($data_string))                                                                       
-    );                                                                                                                   
-		 
-    $result = curl_exec($ch);
-	  
-	  
+    echo "<script>
+
+    const APPKEY = 'wA56JsTLlI8BYum';
+    const APPSECRET = 'mKOwmYroqEtRcputGE0DxN5b3';
+    const APPID = 'SmartOfficeNSET';
+
+    var microgear = Microgear.create({
+	gearkey: APPKEY,
+	gearsecret: APPSECRET,
+        alias: 'LineBotCommand'
+    });
+    
+    microgear.on('message', function(topic,data) {      
+         
+    });
+
+    microgear.on('connected', function() {
+	microgear.setname('LineBotCommand');
+	microgear.chat('Air_PAC101_8_CTRL','PWR_ON');
+    });
+
+    microgear.resettoken();
+    microgear.connect(APPID);
+	
+</script>";
+    
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = $result;
+    $arrPostData['messages'][0]['text'] = "It's OK!";
     
   }
     else{
@@ -99,6 +111,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['text'] = 'คุณสามารถสอนบอทให้ฉลาดขึ้นได้ เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
     }
   }
+	
 }
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
