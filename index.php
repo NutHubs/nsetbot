@@ -1,4 +1,30 @@
 <script src="https://cdn.netpie.io/microgear.js"></script>
+<script type="text/javascript">
+
+function airControl()
+{
+    const APPKEY = 'wA56JsTLlI8BYum';
+    const APPSECRET = 'mKOwmYroqEtRcputGE0DxN5b3';
+    const APPID = 'SmartOfficeNSET';
+    var microgear = Microgear.create({
+	gearkey: APPKEY,
+	gearsecret: APPSECRET,
+        alias: 'LineBotCommand'
+    });
+    
+    microgear.on('message', function(topic,data) {      
+         document.getElementById("statusX").innerHTML = data;
+    });
+    microgear.on('connected', function() {
+	microgear.setname('LineBotCommand');
+	microgear.chat('Air_PAC101_8_CTRL','PWR_ON');
+    });
+    microgear.resettoken();
+    microgear.connect(APPID);
+}
+	
+</script>
+
 <?php
 
 $strAccessToken = "6qu1XX+9fv8jsUMRV39GsMvl9qiO/RHYpkSH6H2DDEs4xPJ+TL5jSuB6vCpvxEEFXSZOQUs5DmFz8i938BpzeYuWnsIUkRooWQJmVr4Def9WAgyIvrbk+fSfdtlcxt9pc2qNTUF0CsaHVLHYOCIDJAdB04t89/1O/w1cDnyilFU=";
@@ -98,28 +124,3 @@ $result = curl_exec($channel);
 curl_close ($channel);
 ?>
 
-<script>
-
-	function airControl()
-	{
-    const APPKEY = 'wA56JsTLlI8BYum';
-    const APPSECRET = 'mKOwmYroqEtRcputGE0DxN5b3';
-    const APPID = 'SmartOfficeNSET';
-    var microgear = Microgear.create({
-	gearkey: APPKEY,
-	gearsecret: APPSECRET,
-        alias: 'LineBotCommand'
-    });
-    
-    microgear.on('message', function(topic,data) {      
-         document.getElementById("statusX").innerHTML = data;
-    });
-    microgear.on('connected', function() {
-	microgear.setname('LineBotCommand');
-	microgear.chat('Air_PAC101_8_CTRL','PWR_ON');
-    });
-    microgear.resettoken();
-    microgear.connect(APPID);
-	}
-	
-</script>
