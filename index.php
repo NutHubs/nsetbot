@@ -13,7 +13,7 @@ function airControl()
     });
     
     microgear.on('message', function(topic,data) {      
-         document.getElementById("statusX").innerHTML = data;
+         
     });
     microgear.on('connected', function() {
 	microgear.setname('LineBotCommand');
