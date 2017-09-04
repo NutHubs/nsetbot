@@ -14,7 +14,7 @@ function airControl()
         var url = 'https://api.netpie.io/topic/'+APPID+Topic+'?retain&auth=' +KEY+':'+SECRET;
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.open('PUT',url,true);
-        xmlHttp.send('ON');
+        xmlHttp.send('PWR_ON');
         window.alert(url);//for debugging purpose
     }    
 
