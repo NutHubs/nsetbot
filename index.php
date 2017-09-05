@@ -103,7 +103,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "QC Room temp : \n".$strTemp[0]." °C";
+    $arrPostData['messages'][0]['text'] = "QC Room temp : \n".$strTemp." °C";
   }
   else if(strtoupper($_msg) == "IMGX")
   {   
