@@ -107,7 +107,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   }
   else if(strtoupper($_msg) == "IMGX")
   {   
-    $ch = curl_init("https://api.netpie.io/topic/SmartOfficeNSET/Air_PAC101_8_CTRL?retain&auth=GWzr8IhAEiqU0bQ:YgXAiVXQakianq4wMZraDMhux");
+    $ch = curl_init("https://api.netpie.io/topic/SmartOfficeNSET/gearname/Air_PAC101_8_CTRL?retain&auth=GWzr8IhAEiqU0bQ:YgXAiVXQakianq4wMZraDMhux");
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS,"PWR_ON");
