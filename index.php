@@ -91,6 +91,20 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = "Server room temp : \n".$arrTemp[0]." °C";
   }
+  else if(strtoupper($_msg) == "QC TEMP" || strtoupper($_msg) == "QC TEMPERATURE")
+  {
+    header('Access-Control-Allow-Origin: *');
+    $url = "https://api.netpie.io/topic/NSETEnergySaving/AirCond018/Temperature?retain&auth=ejfAKHEIYXQAJzK:Ni7EbcUpW7KWgsFPQzFEOBWdY";
+    $response = file_get_contents($url);
+    $obj = json_decode($response, true);
+    $strTemp = $obj[0]['payload'];
+    //$arrTemp = explode("|", $strTemp);
+    
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = "QC Room temp : \n".$strTemp[0]." °C";
+  }
   else if(strtoupper($_msg) == "IMGX")
   {   
     $ch = curl_init("https://api.netpie.io/topic/SmartOfficeNSET/Air_PAC101_8_CTRL?retain&auth=wA56JsTLlI8BYum:mKOwmYroqEtRcputGE0DxN5b3");
