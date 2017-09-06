@@ -114,10 +114,21 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $response = curl_exec($ch);
 	  
     $arrJsonX = json_decode($response, true);
-    $arrPostData = array();
-    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = $arrJsonX['message'];
+	  
+    if(strtoupper($arrJsonX['message']) == "SUCCESS")
+    {
+    	$arrPostData = array();
+    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    	$arrPostData['messages'][0]['type'] = "text";
+    	$arrPostData['messages'][0]['text'] = "OK";
+    }
+    else
+    {
+	$arrPostData = array();
+    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    	$arrPostData['messages'][0]['type'] = "text";
+    	$arrPostData['messages'][0]['text'] = "Try again !";
+    }
     
   }
     else{
