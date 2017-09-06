@@ -117,7 +117,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = $arrJsonX['code'];
+    $arrPostData['messages'][0]['text'] = $arrJsonX['message'];
     
   }
     else{
