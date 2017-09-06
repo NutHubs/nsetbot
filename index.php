@@ -112,11 +112,12 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS,"PWR_ON");
     $response = curl_exec($ch);
-	
+	  
+    $arrJsonX = json_decode($response, true);
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = $respone[0]['code'];
+    $arrPostData['messages'][0]['text'] = $arrJsonX['code'];
     
   }
     else{
