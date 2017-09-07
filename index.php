@@ -1,28 +1,3 @@
-<html>
-<head>
-<script src="https://cdn.netpie.io/microgear.js"></script>
-<script type="text/javascript">
-
-function airControl()
-{	
-    var APPID= "SmartOfficeNSET"; //enter your appid
-    var KEY = "wA56JsTLlI8BYum"; //enter your key
-    var SECRET = "mKOwmYroqEtRcputGE0DxN5b3"; //enter your secret
-    var Topic = "/Air_PAC101_8_CTRL"; //choose any topic name
-
-    function airControl(){
-        var url = 'https://api.netpie.io/topic/'+APPID+Topic+'?retain&auth=' +KEY+':'+SECRET;
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.open('PUT',url,true);
-        xmlHttp.send('PWR_ON');
-        window.alert(url);//for debugging purpose
-    }    
-
-}
-	
-</script>
-</head>
-<body>
 <?php
 
 $strAccessToken = "6qu1XX+9fv8jsUMRV39GsMvl9qiO/RHYpkSH6H2DDEs4xPJ+TL5jSuB6vCpvxEEFXSZOQUs5DmFz8i938BpzeYuWnsIUkRooWQJmVr4Def9WAgyIvrbk+fSfdtlcxt9pc2qNTUF0CsaHVLHYOCIDJAdB04t89/1O/w1cDnyilFU=";
@@ -105,7 +80,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = "QC Room temp : \n".$strTemp." °C";
   }
-  else if(strtoupper($_msg) == "PRODUCTION RESULT" || strtoupper($_msg) == "PRODUCTION" || strpos(strtoupper($_msg) , "PRODUCT") == true)
+  else if(strtoupper($_msg) == "PRODUCTION RESULT" || strpos(strtoupper($_msg) , "PRODUCT") == true)
   {
     header('Access-Control-Allow-Origin: *');
     $url = "https://api.netpie.io/topic/SmartCounter/Actual?auth=sq9HZRpoNGgxWIE:pssfGTjYIzmfjnLePlOYkN3oP";
@@ -172,6 +147,4 @@ curl_setopt($channel, CURLOPT_SSL_VERIFYPEER, false);
 $result = curl_exec($channel);
 curl_close ($channel);
 ?>
-</body>
-</html>
 
