@@ -105,6 +105,20 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = "QC Room temp : \n".$strTemp." °C";
   }
+  else if(strtoupper($_msg) == "COUNTER")
+  {
+    header('Access-Control-Allow-Origin: *');
+    $url = "https://api.netpie.io/topic/SmartCounter/Actual?auth=sq9HZRpoNGgxWIE:pssfGTjYIzmfjnLePlOYkN3oP";
+    $response = file_get_contents($url);
+    $obj = json_decode($response, true);
+    $strTemp = $obj[0]['payload'];
+    //$arrTemp = explode("|", $strTemp);
+    
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = "NSET Actual : ".$strTemp;
+  }
   else if(strtoupper($_msg) == "AIR1")
   {   
     $ch = curl_init("https://api.netpie.io/topic/SmartOfficeNSET/gearname/Air_PAC101_8_CTRL?retain&auth=GWzr8IhAEiqU0bQ:YgXAiVXQakianq4wMZraDMhux");
