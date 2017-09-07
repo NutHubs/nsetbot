@@ -113,7 +113,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "-- WM100 -- \n GOOD : ".number_format($arrWM100[1])." Pcs.\n NG : ".number_format($arrWM100[2])." Pcs.\n TOTAL : ".number_format($arrWM100[3])." Pcs.";
+    $arrPostData['messages'][0]['text'] = "-- LINE WM100 -- \n OK : ".number_format($arrWM100[1])." Pcs.\n NG : ".number_format($arrWM100[2])." Pcs.\n TOTAL : ".number_format($arrWM100[3])." Pcs.";
   }
   else if(strtoupper($_msg) == "AIR1")
   {   
