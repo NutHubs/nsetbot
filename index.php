@@ -112,14 +112,19 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $response = file_get_contents($url);
     $obj = json_decode($response, true);
     $strActual = $obj[0]['payload'];
+	  
+    $url1 = "https://api.netpie.io/topic/SmartCounter/Target?auth=sq9HZRpoNGgxWIE:pssfGTjYIzmfjnLePlOYkN3oP";
+    $response1 = file_get_contents($url1);
+    $obj1 = json_decode($response1, true);
+    $strTarget = $obj1[0]['payload'];
     //$arrTemp = explode("|", $strTemp);
     
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "NSET Target : "."5555"." unit.";
+    $arrPostData['messages'][0]['text'] = "NSET Target : ".number_format($strActual)." unit.";
     $arrPostData['messages'][1]['type'] = "text";
-    $arrPostData['messages'][1]['text'] = "NSET Actual : ".number_format($strActual)." unit.";
+    $arrPostData['messages'][1]['text'] = "NSET Actual : ".number_format($strTarget)." unit.";
   }
   else if(strtoupper($_msg) == "AIR1")
   {   
