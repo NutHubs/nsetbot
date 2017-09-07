@@ -111,13 +111,13 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $url = "https://api.netpie.io/topic/SmartCounter/Actual?auth=sq9HZRpoNGgxWIE:pssfGTjYIzmfjnLePlOYkN3oP";
     $response = file_get_contents($url);
     $obj = json_decode($response, true);
-    $strTemp = $obj[0]['payload'];
+    $strActual = $obj[0]['payload'];
     //$arrTemp = explode("|", $strTemp);
     
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "NSET Actual : ".$strTemp;
+    $arrPostData['messages'][0]['text'] = "NSET Actual : ".money_format('%(#10n', $strActual);
   }
   else if(strtoupper($_msg) == "AIR1")
   {   
