@@ -101,6 +101,20 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][1]['type'] = "text";
     $arrPostData['messages'][1]['text'] = "Actual : ".number_format($strActual)." unit.";
   }
+  else if(strtoupper($_msg) == "WM100" && strpos(strtoupper($_msg), "prod") !== false)
+  {
+    header('Access-Control-Allow-Origin: *');
+    $url = "https://api.netpie.io/topic/SmartMachine/WM100AS/Monitor0?retain&auth=gRYd0nLxFMQiZuP:tKosWuhZZTHNjYdW1Jw3QPTBY";
+    $response = file_get_contents($url);
+    $obj = json_decode($response, true);
+    $strWM100 = $obj[0]['payload'];
+    $arrWM100 = explode("|", $strWM100);
+    
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = "-- WM100 -- \n GOOD : ".number_format($arrWM100[1])." Pcs.\n NG : ".number_format($arrWM100[2])." Pcs.\n TOTAL : ".number_format($arrWM100[3])." Pcs.";
+  }
   else if(strtoupper($_msg) == "AIR1")
   {   
     $ch = curl_init("https://api.netpie.io/topic/SmartOfficeNSET/gearname/Air_PAC101_8_CTRL?retain&auth=GWzr8IhAEiqU0bQ:YgXAiVXQakianq4wMZraDMhux");
