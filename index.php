@@ -105,7 +105,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = "QC Room temp : \n".$strTemp." °C";
   }
-  else if(strtoupper($_msg) == "COUNTER")
+  else if(strtoupper($_msg) == "COUNTER" || strpos( strtoupper($_msg) , "ACTUAL" ) == true )
   {
     header('Access-Control-Allow-Origin: *');
     $url = "https://api.netpie.io/topic/SmartCounter/Actual?auth=sq9HZRpoNGgxWIE:pssfGTjYIzmfjnLePlOYkN3oP";
