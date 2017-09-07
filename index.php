@@ -117,7 +117,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "NSET Actual : ".number_format($strActual);
+    $arrPostData['messages'][0]['text'] = "NSET Actual : ".number_format($strActual)." unit.";
   }
   else if(strtoupper($_msg) == "AIR1")
   {   
