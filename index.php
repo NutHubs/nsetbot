@@ -105,7 +105,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = "QC Room temp : \n".$strTemp." °C";
   }
-  else if(strtoupper($_msg) == "COUNTER" || strpos( strtoupper($_msg) , "ACTUAL" ) == true )
+  else if(strtoupper($_msg) == "COUNTER" || strpos(strtoupper($_msg) , "ACTUAL" ) == true || strtoupper($_msg) == "PRODUCTION")
   {
     header('Access-Control-Allow-Origin: *');
     $url = "https://api.netpie.io/topic/SmartCounter/Actual?auth=sq9HZRpoNGgxWIE:pssfGTjYIzmfjnLePlOYkN3oP";
@@ -122,9 +122,9 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "NSET Target : ".number_format($strActual)." unit.";
+    $arrPostData['messages'][0]['text'] = "NSET Target : ".number_format($strTarget)." unit.";
     $arrPostData['messages'][1]['type'] = "text";
-    $arrPostData['messages'][1]['text'] = "NSET Actual : ".number_format($strTarget)." unit.";
+    $arrPostData['messages'][1]['text'] = "NSET Actual : ".number_format($strActual)." unit.";
   }
   else if(strtoupper($_msg) == "AIR1")
   {   
