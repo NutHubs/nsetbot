@@ -101,7 +101,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][1]['type'] = "text";
     $arrPostData['messages'][1]['text'] = "Actual : ".number_format($strActual)." unit.";
   }
-  else if(strtoupper($_msg) == "WM100")
+  else if(strpos(strtoupper($_msg), "PROD") !== false && strpos(strtoupper($_msg), "WM100") !== false)
   {
     header('Access-Control-Allow-Origin: *');
     $url = "https://api.netpie.io/topic/SmartMachine/WM100AS/Monitor0?retain&auth=gRYd0nLxFMQiZuP:tKosWuhZZTHNjYdW1Jw3QPTBY";
