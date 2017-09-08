@@ -76,12 +76,12 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$data = $client->call('resultCustomer', $params);
  	$mydata = json_decode($data["resultCustomerResult"],true); 
 	  
-	$strData= $mydata[0]['Total'];
+	//$strData= $mydata[0]['Total'];
     
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     	$arrPostData['messages'][0]['type'] = "text";
-    	$arrPostData['messages'][0]['text'] = "Holiday : ".$strData; 
+    	$arrPostData['messages'][0]['text'] = "Holiday : ".$mydata; 
   }
   else if(strtoupper($_msg) == "QC TEMP" || strtoupper($_msg) == "QC TEMPERATURE")
   {
