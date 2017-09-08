@@ -76,7 +76,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$data = $client->call('resultCustomer', $params);
  	$mydata = json_decode($data["resultCustomerResult"],true); 
 	  
-	$strData= $obj['Total'];
+	$strData= $mydata[0]['Total'];
     
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
