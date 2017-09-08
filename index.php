@@ -66,6 +66,23 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = "Server room temp : \n".$arrTemp[0]." °C";
   }
+  else if(strtoupper($_msg) == "AAA")
+  {
+	include("lib/nusoap.php");
+	$client = new nusoap_client("http://223.27.205.134:40000/Administration/nset_getdata.asmx?wsdl",true); 
+	$params = array(
+		'strCountry' => '1189'
+	);
+	$data = $client->call('resultCustomer', $params);
+ 	$mydata = json_decode($data["resultCustomerResult"],true); 
+	  
+	$strData= $obj[0]['Total'];
+    
+    	$arrPostData = array();
+    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    	$arrPostData['messages'][0]['type'] = "text";
+    	$arrPostData['messages'][0]['text'] = "Holiday : ".$strData; 
+  }
   else if(strtoupper($_msg) == "QC TEMP" || strtoupper($_msg) == "QC TEMPERATURE")
   {
     header('Access-Control-Allow-Origin: *');
