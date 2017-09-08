@@ -66,7 +66,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = "Server room temp : \n".$arrTemp[0]." °C";
   }
-  else if(strtoupper($_msg) == "AAA")
+  else if(strtoupper($_msg) == "HOLIDAY")
   {
 	include("lib/nusoap.php");
 	$client = new nusoap_client("http://223.27.205.134:40000/Administration/nset_getdata.asmx?wsdl",true); 
@@ -76,7 +76,21 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     	$arrPostData['messages'][0]['type'] = "text";
-    	$arrPostData['messages'][0]['text'] = "Holiday : ".$mydata[0]['Total']." person."; 
+    	$arrPostData['messages'][0]['text'] = "Holiday : ".$mydata[0]['Total']." person.";
+	  
+  }
+  else if(strtoupper($_msg) == "CCC")
+  {
+	include("lib/nusoap.php");
+	$client = new nusoap_client("http://223.27.205.134:40000/Administration/nset_getdata.asmx?wsdl",true); 
+	$data = $client->call('chkHoliday');
+	$mydata = json_decode($data["chkHolidayResult"],true); 
+    
+    	$arrPostData = array();
+    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    	$arrPostData['messages'][0]['type'] = "text";
+    	$arrPostData['messages'][0]['text'] = "Holiday : ".$mydata[0]['Total']." Xperson.";
+	  
   }
   else if(strtoupper($_msg) == "QC TEMP" || strtoupper($_msg) == "QC TEMPERATURE")
   {
