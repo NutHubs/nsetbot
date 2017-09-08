@@ -69,7 +69,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   else if(strtoupper($_msg) == "HOLIDAY")
   {
 	include("lib/nusoap.php");
-	$client = new nusoap_client("http://223.27.205.134:40000/Administration/nset_getdata.asmx?wsdl",true); 
+	$client = new nusoap_client("http://223.27.205.134:12000/Administration/nset_getdata.asmx?wsdl",true); 
 	$data = $client->call('resultCustomer');
 	$mydata = json_decode($data["resultCustomerResult"],true); 
     
@@ -82,7 +82,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   else if(strtoupper($_msg) == "CCC")
   {
 	include("lib/nusoap.php");
-	$client = new nusoap_client("http://223.27.205.134:40000/Administration/nset_getdata.asmx?wsdl",true); 
+	$client = new nusoap_client("http://223.27.205.134:12000/Administration/nset_getdata.asmx?wsdl",true); 
 	$data = $client->call('chkHoliday');
 	$mydata = json_decode($data["chkHolidayResult"],true); 
     
