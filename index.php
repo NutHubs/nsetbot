@@ -97,6 +97,20 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = "QC Room temp : \n".$strTemp." °C";
   }
+  else if(strtoupper($_msg) == "WM100" || strpos(strtoupper($_msg), "PROD") !== false && strpos(strtoupper($_msg), "WM100") !== false)
+  {
+    header('Access-Control-Allow-Origin: *');
+    $url = "https://api.netpie.io/topic/SmartMachine/WM100AS/Monitor0?retain&auth=gRYd0nLxFMQiZuP:tKosWuhZZTHNjYdW1Jw3QPTBY";
+    $response = file_get_contents($url);
+    $obj = json_decode($response, true);
+    $strWM100 = $obj[0]['payload'];
+    $arrWM100 = explode("|", $strWM100);
+    
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = "--- LINE WM100 --- \n OK : ".number_format($arrWM100[1])." Pcs.\n NG : ".number_format($arrWM100[2])." Pcs.\n TOTAL : ".number_format($arrWM100[3])." Pcs.";
+  }
   else if(strtoupper($_msg) == "PRODUCTION" || strtoupper($_msg) == "ACTUAL" || strpos(strtoupper($_msg), "PRODUCT") !== false)
   {
     header('Access-Control-Allow-Origin: *');
@@ -117,20 +131,6 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['text'] = "Target : ".number_format($strTarget)." unit.";
     $arrPostData['messages'][1]['type'] = "text";
     $arrPostData['messages'][1]['text'] = "Actual : ".number_format($strActual)." unit.";
-  }
-  else if(strpos(strtoupper($_msg), "PROD") !== false && strpos(strtoupper($_msg), "WM100") !== false)
-  {
-    header('Access-Control-Allow-Origin: *');
-    $url = "https://api.netpie.io/topic/SmartMachine/WM100AS/Monitor0?retain&auth=gRYd0nLxFMQiZuP:tKosWuhZZTHNjYdW1Jw3QPTBY";
-    $response = file_get_contents($url);
-    $obj = json_decode($response, true);
-    $strWM100 = $obj[0]['payload'];
-    $arrWM100 = explode("|", $strWM100);
-    
-    $arrPostData = array();
-    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "--- LINE WM100 --- \n OK : ".number_format($arrWM100[1])." Pcs.\n NG : ".number_format($arrWM100[2])." Pcs.\n TOTAL : ".number_format($arrWM100[3])." Pcs.";
   }
   else if(strtoupper($_msg) == "AIR1")
   {   
