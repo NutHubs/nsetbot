@@ -135,15 +135,15 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $strM = date('i');	  
     $HoureX = 0;
 	  
-    if((int)$strH > 07 && (int)$strH < 19)
+    if((int)$strH > 7)
     {
     	$HoureX = (int)$strH - 8;
     }
-    else if((int)$strH > 19 && (int)$strH == 23)
+    else if((int)$strH > 19)
     {
 	$HoureX = (int)$strH - 20;
     }
-    else if((int)$strH > 23 && (int)$strH < 7)
+    else if((int)$strH > 0)
     {
 	$HoureX = (int)$strH + 4;
     }
