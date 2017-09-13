@@ -132,7 +132,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     
     date_default_timezone_set("Asia/Bangkok");
     $strH = date('h');
-    $strM = date('MM');
+    $strM = date('M');
     
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
