@@ -131,7 +131,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $strQuality = ((int)$arrWM100[1]/(int)$arrWM100[3])*100;
     
     date_default_timezone_set("Asia/Bangkok");
-    $strH = (int)date('H') *60;
+    $strH = date('H');
     $strM = date('i');
 	  
     $HoureX = 0;
