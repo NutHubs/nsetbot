@@ -120,6 +120,20 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = "--- LINE WM100 --- \n OK : ".number_format($arrWM100[1])." Pcs.\n NG : ".number_format($arrWM100[2])." Pcs.\n TOTAL : ".number_format($arrWM100[3])." Pcs.";
   }
+  else if(strtoupper($_msg) == "WM100 OEE" || strpos(strtoupper($_msg), "WM100") !== false && strpos(strtoupper($_msg), "OEE") !== false)
+  {
+    header('Access-Control-Allow-Origin: *');
+    $url = "https://api.netpie.io/topic/SmartMachine/WM100AS/Monitor0?retain&auth=gRYd0nLxFMQiZuP:tKosWuhZZTHNjYdW1Jw3QPTBY";
+    $response = file_get_contents($url);
+    $obj = json_decode($response, true);
+    $strWM100 = $obj[0]['payload'];
+    $arrWM100 = explode("|", $strWM100);
+    
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = "--- LINE WM100 OEE --- \n Quality : ".(doubleval($arrWM100[1])/doubleval($arrWM100[3]))*100." %";
+  }
   else if(strtoupper($_msg) == "PRODUCTION" || strtoupper($_msg) == "ACTUAL" || strpos(strtoupper($_msg), "PRODUCT") !== false)
   {
     header('Access-Control-Allow-Origin: *');
