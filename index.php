@@ -128,7 +128,6 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $obj = json_decode($response, true);
     $strWM100 = $obj[0]['payload'];
     $arrWM100 = explode("|", $strWM100);
-    $strQuality = ((int)$arrWM100[1]/(int)$arrWM100[3])*100;
     
     date_default_timezone_set("Asia/Bangkok");
     $strH = date('H');
@@ -148,12 +147,19 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$HoureX = (int)$strH + 4;
     }
 	  
-    $strPlan = $HoureX *60;
+    $strActual = (int)$arrWM100[1];
+    $strPlan = ($HoureX *60) + (int)$strM;
+    $strPLproduct = (($HoureX * 60) + ((int)$strM * 60)) / 23;
+    
+    $varAvability = ($strActual/$strPla) * 100;
+    $varQuality = ((int)$arrWM100[1]/(int)$arrWM100[3])*100;
+    $varPerformance = ($strActual/$strPLproduct) * 100;
+    $varOEE = ($varAvability * $varQuality * $varPerformance) / 100;
     
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "--- LINE WM100 OEE --- \n Quality : ".(string)$strQuality." %\n ".$strH.":-".$strPlan;
+    $arrPostData['messages'][0]['text'] = "--- LINE WM100 OEE --- \n Quality : ".(string)$varOEE." %\n ".$strH.":-".$strPlan;
 	  
   }
   else if(strtoupper($_msg) == "PRODUCTION" || strtoupper($_msg) == "ACTUAL" || strpos(strtoupper($_msg), "PRODUCT") !== false)
