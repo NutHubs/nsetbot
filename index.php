@@ -155,7 +155,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     
     $varAvability = ($strActual/$strPlan) * 100;
     $varQuality = ((int)$arrWM100[1]/(int)$arrWM100[3])*100;
-    $varPerformance = ($strACproduct/$strPLproduct) * 100;
+    $varPerformance = $strACproduct/$strPLproduct* 100;
     $varOEE = ($varAvability * $varQuality * $varPerformance) / 10000;
     
     $arrPostData = array();
