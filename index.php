@@ -129,11 +129,13 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $strWM100 = $obj[0]['payload'];
     $arrWM100 = explode("|", $strWM100);
     $strQuality = ((int)$arrWM100[1]/(int)$arrWM100[3])*100;
+    $strH = date('h');
+    $strM = date('m');
     
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "--- LINE WM100 OEE --- \n Quality : ".(string)$strQuality." %\n ".date('h');
+    $arrPostData['messages'][0]['text'] = "--- LINE WM100 OEE --- \n Quality : ".(string)$strQuality." %\n ".date('m');
 	  
   }
   else if(strtoupper($_msg) == "PRODUCTION" || strtoupper($_msg) == "ACTUAL" || strpos(strtoupper($_msg), "PRODUCT") !== false)
