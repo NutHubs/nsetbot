@@ -128,7 +128,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $obj = json_decode($response, true);
     $strWM100 = $obj[0]['payload'];
     $arrWM100 = explode("|", $strWM100);
-    $strQuality = (doubleval($arrWM100[1])/doubleval($arrWM100[3]))*100;
+    $strQuality = (floatval($arrWM100[1])/floatval($arrWM100[3]))*100;
     
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
