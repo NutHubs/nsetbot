@@ -147,14 +147,15 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$HoureX = (int)$strH + 4;
     }
 	  
-    $strActual = (int)$arrWM100[1];
+    $strActual = ((int)$arrWM100[1] * 23) / 60;
     $strPlan = ($HoureX *60) + (int)$strM;
     $strPLproduct = (($HoureX * 60) + ((int)$strM * 60)) / 23;
+    $strACproduct = (int)$arrWM100[1];
     
     $varAvability = ($strActual/$strPlan) * 100;
     $varQuality = ((int)$arrWM100[1]/(int)$arrWM100[3])*100;
-    $varPerformance = ($strActual/$strPLproduct) * 100;
-    $varOEE = (($varAvability * $varQuality)* $varPerformance) / 10000;
+    $varPerformance = ($strACproduct/$strPLproduct) * 100;
+    $varOEE = ($varAvability * $varQuality * $varPerformance) / 10000;
     
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
