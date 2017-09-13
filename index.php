@@ -159,7 +159,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "--- LINE WM100 OEE --- \n Quality : ".(string)$varOEE." %\n ".$strH.":-".$strPlan;
+    $arrPostData['messages'][0]['text'] = "Actual : ".$strActual."\n Plan : ".$strPlan."\n PL.product : ".$strPLproduct."\n Avability : ".$varAvability."\n Quality : ".$varQuality."\n Performance : ".$varPerformance."\n OEE : ".$strOEE;
 	  
   }
   else if(strtoupper($_msg) == "PRODUCTION" || strtoupper($_msg) == "ACTUAL" || strpos(strtoupper($_msg), "PRODUCT") !== false)
