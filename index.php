@@ -132,19 +132,28 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     
     date_default_timezone_set("Asia/Bangkok");
     $strH = date('H');
-    $strM = date('i');
-	  
+    $strM = date('i');	  
     $HoureX = 0;
 	  
-    if((int)$strH > 08)
+    if((int)$strH > 07 && (int)$strH <= 18)
     {
     	$HoureX = (int)$strH - 8;
     }
+    else if((int)$strH > 19 && (int)$strH <= 23)
+    {
+	$HoureX = (int)$strH - 20;
+    }
+    else if((int)$strH > 23 && (int)$strH <= 6)
+    {
+	$HoureX = (int)$strH + 4;
+    }
+	  
+    $strPlan = ($Houre *60) + (int)$strM;
     
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "--- LINE WM100 OEE --- \n Quality : ".(string)$strQuality." %\n ".$strH.":-".$HoureX;
+    $arrPostData['messages'][0]['text'] = "--- LINE WM100 OEE --- \n Quality : ".(string)$strQuality." %\n ".$strH.":-".$strPlan;
 	  
   }
   else if(strtoupper($_msg) == "PRODUCTION" || strtoupper($_msg) == "ACTUAL" || strpos(strtoupper($_msg), "PRODUCT") !== false)
