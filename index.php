@@ -148,7 +148,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$HoureX = (int)$strH + 4;
     }
 	  
-    $strPlan = ($Houre *60) + (int)$strM;
+    $strPlan = ($Houre *60);
     
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
