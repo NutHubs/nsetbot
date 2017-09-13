@@ -131,8 +131,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $strQuality = ((int)$arrWM100[1]/(int)$arrWM100[3])*100;
     
     date_default_timezone_set("Asia/Bangkok");
-    $strH = date('h');
-    $strM = date('M');
+    $strH = (int)date('h') *60;
+    $strM = date('i');
     
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
