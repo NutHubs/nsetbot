@@ -154,12 +154,12 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $varAvability = ($strActual/$strPlan) * 100;
     $varQuality = ((int)$arrWM100[1]/(int)$arrWM100[3])*100;
     $varPerformance = ($strActual/$strPLproduct) * 100;
-    $varOEE = ($varAvability * $varQuality * $varPerformance) / 100;
+    $varOEE = (($varAvability * $varQuality)* $varPerformance) / 100;
     
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "Actual : ".$strActual."\n Plan : ".$strPlan."\n PL.product : ".$strPLproduct."\n Avability : ".$varAvability."\n Quality : ".$varQuality."\n Performance : ".$varPerformance."\n OEE : ".$strOEE;
+    $arrPostData['messages'][0]['text'] = "Actual : ".$strActual."\n Plan : ".$strPlan."\n PL.product : ".$strPLproduct."\n Avability : ".$varAvability."\n Quality : ".$varQuality."\n Performance : ".$varPerformance."\n OEE : ".$strOEE." %";
 	  
   }
   else if(strtoupper($_msg) == "PRODUCTION" || strtoupper($_msg) == "ACTUAL" || strpos(strtoupper($_msg), "PRODUCT") !== false)
