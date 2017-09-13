@@ -132,12 +132,12 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     
     date_default_timezone_set("Asia/Bangkok");
     $strH = date('h');
-    $strM = date('m');
+    $strM = date('MM');
     
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "--- LINE WM100 OEE --- \n Quality : ".(string)$strQuality." %\n ".date('h').":".date('mm');
+    $arrPostData['messages'][0]['text'] = "--- LINE WM100 OEE --- \n Quality : ".(string)$strQuality." %\n ".$strH.":".$strM;
 	  
   }
   else if(strtoupper($_msg) == "PRODUCTION" || strtoupper($_msg) == "ACTUAL" || strpos(strtoupper($_msg), "PRODUCT") !== false)
