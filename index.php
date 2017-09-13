@@ -150,7 +150,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $strActual = ((int)$arrWM100[1] * 23) / 60;
     $strPlan = ($HoureX *60) + (int)$strM;
 	  
-    $strPLproduct = (($HoureX * 60) + (int)$strM) / 23;
+    $strPLproduct = ($HoureX * 60) + ((int)$strM / 23);
     $strACproduct = (int)$arrWM100[1];
     
     $varAvability = ($strActual/$strPlan) * 100;
