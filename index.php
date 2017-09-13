@@ -151,7 +151,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $strPlan = ($HoureX *60) + (int)$strM;
     $strPLproduct = (($HoureX * 60) + ((int)$strM * 60)) / 23;
     
-    $varAvability = ($strActual/$strPla) * 100;
+    $varAvability = ($strActual/$strPlan) * 100;
     $varQuality = ((int)$arrWM100[1]/(int)$arrWM100[3])*100;
     $varPerformance = ($strActual/$strPLproduct) * 100;
     $varOEE = ($varAvability * $varQuality * $varPerformance) / 100;
