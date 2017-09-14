@@ -79,6 +79,19 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData['messages'][0]['text'] = "Holiday : ".$mydata[0]['Total']." person.";
 	  
   }
+  else if(strtoupper($_msg) == "MANPOWER")
+  {
+	include("lib/nusoap.php");
+	$client = new nusoap_client("http://223.27.205.134:12000/Administration/nset_getdata.asmx?wsdl",true); 
+	$data = $client->call('chkManpower');
+	$mydata = json_decode($data["chkManpowerResult"],true); 
+    
+    	$arrPostData = array();
+    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    	$arrPostData['messages'][0]['type'] = "text";
+    	$arrPostData['messages'][0]['text'] = "MANPOWER\n------------\n".$mydata[0]['TTL_MANPOWER'];
+	  
+  }
   else if(strtoupper($_msg) == "CCC")
   {
 	include("lib/nusoap.php");
