@@ -114,7 +114,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$params = array('empID' => (string)$arrMsg[1]);
 	$data = $client->call('chkEmployee', $params);
 	$mydata = json_decode($data["chkEmployeeResult"],true); 
-	$arrdata = explode("|", $mydata);
+	//$arrdata = explode("|", $mydata);
     
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
