@@ -119,7 +119,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     	$arrPostData['messages'][0]['type'] = "text";
-    	$arrPostData['messages'][0]['text'] = $arrdata[0]['description'];
+    	$arrPostData['messages'][0]['text'] = $mydata[0]['description'];
 	  
   }
   else if(strtoupper($_msg) == "MDB1")
