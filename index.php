@@ -66,19 +66,6 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = "Server room temp : \n".$arrTemp[0]." °C";
   }
-  else if(strtoupper($_msg) == "HOLIDAY")
-  {
-	include("lib/nusoap.php");
-	$client = new nusoap_client("http://223.27.205.134:12000/Administration/nset_getdata.asmx?wsdl",true); 
-	$data = $client->call('resultCustomer');
-	$mydata = json_decode($data["resultCustomerResult"],true); 
-    
-    	$arrPostData = array();
-    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    	$arrPostData['messages'][0]['type'] = "text";
-    	$arrPostData['messages'][0]['text'] = "Holiday : ".$mydata[0]['Total']." person.";
-	  
-  }
   else if(strtoupper($_msg) == "MANPOWER")
   {
 	include("lib/nusoap.php");
@@ -89,10 +76,10 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     	$arrPostData['messages'][0]['type'] = "text";
-    	$arrPostData['messages'][0]['text'] = "MANPOWER\n-------------------------\n Total : ".number_format($mydata[0]['TTL_MANPOWER'])."\n Indirect : ".number_format($mydata[0]['TTL_INDIRECT'])."\n Direct : ".number_format($mydata[0]['TTL_DIRECT']);
+    	$arrPostData['messages'][0]['text'] = "MANPOWER\n-----------------------\n Total : ".number_format($mydata[0]['TTL_MANPOWER'])."\n Indirect : ".number_format($mydata[0]['TTL_INDIRECT'])."\n Direct : ".number_format($mydata[0]['TTL_DIRECT']);
 	  
   }
-  else if(strtoupper($_msg) == "CCC")
+  else if(strtoupper($_msg) == "HOLIDAY")
   {
 	include("lib/nusoap.php");
 	$client = new nusoap_client("http://223.27.205.134:12000/Administration/nset_getdata.asmx?wsdl",true); 
@@ -102,7 +89,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     	$arrPostData['messages'][0]['type'] = "text";
-    	$arrPostData['messages'][0]['text'] = "Holiday : ".$mydata[0]['Total']." Xperson.";
+    	$arrPostData['messages'][0]['text'] = "TODAY is a Holiday : ".$mydata[0]['Total']." person.";
 	  
   }
   else if(strtoupper($_msg) == "QC TEMP" || strtoupper($_msg) == "QC TEMPERATURE")
@@ -131,7 +118,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "--- LINE WM100 --- \n OK : ".number_format($arrWM100[1])." Pcs.\n NG : ".number_format($arrWM100[2])." Pcs.\n TOTAL : ".number_format($arrWM100[3])." Pcs.";
+    $arrPostData['messages'][0]['text'] = "LINE WM10\n --------------------- \n OK : ".number_format($arrWM100[1])." Pcs.\n NG : ".number_format($arrWM100[2])." Pcs.\n TOTAL : ".number_format($arrWM100[3])." Pcs.";
   }
   else if(strtoupper($_msg) == "WM100 OEE" || strpos(strtoupper($_msg), "WM100") !== false && strpos(strtoupper($_msg), "OEE") !== false)
   {
