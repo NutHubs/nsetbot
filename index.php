@@ -118,7 +118,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "MDB1 : \n".(int)$strData[16]." Hz.";
+    $arrPostData['messages'][0]['text'] = "MDB1 : \n".((int)$arrData[16] / 100)." Hz.";
 	  
   }
   else if(strtoupper($_msg) == "WM100" || strpos(strtoupper($_msg), "PROD") !== false && strpos(strtoupper($_msg), "WM100") !== false)
