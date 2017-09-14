@@ -89,7 +89,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     	$arrPostData['messages'][0]['type'] = "text";
-    	$arrPostData['messages'][0]['text'] = "MANPOWER\n--------------------\n Total : ".number_format($mydata[0]['TTL_MANPOWER'])."\n Indirect : ".number_format($mydata[0]['TTL_INDIRECT'])."\n Direct : ".number_format($mydata[0]['TTL_DIRECT']);
+    	$arrPostData['messages'][0]['text'] = "MANPOWER\n-------------------------\n Total : ".number_format($mydata[0]['TTL_MANPOWER'])."\n Indirect : ".number_format($mydata[0]['TTL_INDIRECT'])."\n Direct : ".number_format($mydata[0]['TTL_DIRECT']);
 	  
   }
   else if(strtoupper($_msg) == "CCC")
