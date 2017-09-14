@@ -111,7 +111,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$arrMsg = explode(" ", $_msg);
 	include("lib/nusoap.php");
 	$client = new nusoap_client("http://223.27.205.134:12000/Administration/nset_getdata.asmx?wsdl",true); 
-	$data = $client->call('chkEmployee', (string)$arrMsg[1]);
+	$params = array('empID' => (string)$arrMsg[1]);
+	$data = $client->call('chkEmployee', $params);
 	$mydata = json_decode($data["chkEmployeeResult"],true); 
 	$arrdata = explode("|", $mydata);
     
