@@ -66,6 +66,20 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = "Server room temp : \n".$arrTemp[0]." °C";
   }
+  else if(strtoupper($_msg) == "QC TEMP" || strtoupper($_msg) == "QC TEMPERATURE")
+  {
+    header('Access-Control-Allow-Origin: *');
+    $url = "https://api.netpie.io/topic/NSETEnergySaving/AirCond018/Temperature?retain&auth=ejfAKHEIYXQAJzK:Ni7EbcUpW7KWgsFPQzFEOBWdY";
+    $response = file_get_contents($url);
+    $obj = json_decode($response, true);
+    $strTemp = $obj[0]['payload'];
+    //$arrTemp = explode("|", $strTemp);
+    
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = "QC Room temp : \n".$strTemp." °C";
+  }
   else if(strtoupper($_msg) == "MANPOWER")
   {
 	include("lib/nusoap.php");
@@ -92,19 +106,20 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData['messages'][0]['text'] = "TODAY is a Holiday : ".$mydata[0]['Total']." person.";
 	  
   }
-  else if(strtoupper($_msg) == "QC TEMP" || strtoupper($_msg) == "QC TEMPERATURE")
+  else if(strtoupper($_msg) == "MDB1")
   {
     header('Access-Control-Allow-Origin: *');
-    $url = "https://api.netpie.io/topic/NSETEnergySaving/AirCond018/Temperature?retain&auth=ejfAKHEIYXQAJzK:Ni7EbcUpW7KWgsFPQzFEOBWdY";
+    $url = "https://api.netpie.io/topic/SmartpowerMeter/electricroom/metermdb1?retain&auth=5tsipuvi6tRjgOX:Y9p0oR3bjlSCiVyNK5PlSNNFY";
     $response = file_get_contents($url);
     $obj = json_decode($response, true);
-    $strTemp = $obj[0]['payload'];
-    //$arrTemp = explode("|", $strTemp);
+    $strData = $obj[0]['payload'];
+    $arrData = explode("|", $strData);
     
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "QC Room temp : \n".$strTemp." °C";
+    $arrPostData['messages'][0]['text'] = "MDB1 : \n".((int)$strData[16] / 100)." Hz.";
+	  
   }
   else if(strtoupper($_msg) == "WM100" || strpos(strtoupper($_msg), "PROD") !== false && strpos(strtoupper($_msg), "WM100") !== false)
   {
