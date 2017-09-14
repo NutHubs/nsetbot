@@ -118,7 +118,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "MDB1\n-----------------\n Frequency : ".((int)$arrData[16] / 100)." Hz. \n PowerFactor : ".$arrData[15]."\n K watt : ".number_format($arrData[14])." Kw \n ECP(R) : ".number_format($arrData[1])." Amp";
+    $arrPostData['messages'][0]['text'] = "MDB1\n----------\n Frequency : ".((int)$arrData[16] / 100)." Hz. \n PowerFactor : ".$arrData[15]."\n K watt : ".number_format($arrData[14])." Kw \n ECP(R) : ".number_format($arrData[1])." Amp";
 	  
   }
   else if(strtoupper($_msg) == "WM100" || strpos(strtoupper($_msg), "PROD") !== false && strpos(strtoupper($_msg), "WM100") !== false)
