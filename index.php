@@ -106,7 +106,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData['messages'][0]['text'] = "TODAY is a Holiday : ".$mydata[0]['Total']." person.";
 	  
   }
-  else if(ereg("^WHO[[:space:]]^[0-9]^[0-9]^[0-9]^[0-9]^[0-9]^[0-9]", strtoupper($_msg)) == true)
+  else if(ereg("^WHO[[:space:]][0-9][0-9][0-9][0-9][0-9][0-9]", strtoupper($_msg)) == true)
   {
 	//include("lib/nusoap.php");
 	//$client = new nusoap_client("http://223.27.205.134:12000/Administration/nset_getdata.asmx?wsdl",true); 
