@@ -106,6 +106,20 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData['messages'][0]['text'] = "TODAY is a Holiday : ".$mydata[0]['Total']." person.";
 	  
   }
+  else if(strtoupper($_msg) == "XXX")
+  {
+	//include("lib/nusoap.php");
+	//$client = new nusoap_client("http://223.27.205.134:12000/Administration/nset_getdata.asmx?wsdl",true); 
+	//$data = $client->call('chkHoliday');
+	//$mydata = json_decode($data["chkHolidayResult"],true); 
+	$aa = ereg("/(WHO$)/m", strtoupper($_msg));
+    
+    	$arrPostData = array();
+    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    	$arrPostData['messages'][0]['type'] = "text";
+    	$arrPostData['messages'][0]['text'] = $aa;
+	  
+  }
   else if(strtoupper($_msg) == "MDB1")
   {
     header('Access-Control-Allow-Origin: *');
