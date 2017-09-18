@@ -103,9 +103,10 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     	$arrPostData['messages'][0]['type'] = "text";
-    	$arrPostData['messages'][0]['text'] = "TODAY is a Holiday : ".$mydata[0]['Total']." person.";
+    	$arrPostData['messages'][0]['text'] = "TODAY Holiday : ".$mydata[0]['Total']." person.";
 	  
   }
+  //who emoployee id
   else if(ereg("^(WHO[[:space:]])([0-9][0-9][0-9][0-9][0-9][0-9])$", strtoupper($_msg)) == true)
   {
 	include("lib/nusoap.php");
@@ -129,7 +130,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$data = $client->call('chkOT');
 	$mydata = json_decode($data["chkOTResult"],true); 
     	
-	$strData = "OT TODAY \n ------------------- \n";
+	$strData = "OT TODAY \n ----------------- \n";
 	$strCount = 0;
 	  
 	foreach ($mydata as $result)
@@ -138,7 +139,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 		$strCount += (int)$result['Total'];
 	}
 	  
-	$strData = $strData."\n :: Total :: ".$strCount." person.";
+	$strData = $strData."\n :: Total ::  ".$strCount." person.";
 	
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
