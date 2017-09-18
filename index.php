@@ -122,6 +122,19 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData['messages'][0]['text'] = "Name : ".$mydata[0]['description']."\n Position : ".$mydata[0]['position']."\n Section : ".$mydata[0]['section_name'];
 	  
   }
+  else if(strtoupper($_msg) == "OT")
+  {
+	include("lib/nusoap.php");
+	$client = new nusoap_client("http://223.27.205.134:12000/Administration/nset_getdata.asmx?wsdl",true); 
+	$data = $client->call('chkOT');
+	$mydata = json_decode($data["chkOTResult"],true); 
+    
+    	$arrPostData = array();
+    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    	$arrPostData['messages'][0]['type'] = "text";
+    	$arrPostData['messages'][0]['text'] = "OT : ".$mydata[0]['Total']." person";
+	  
+  }
   else if(strtoupper($_msg) == "MDB1")
   {
     header('Access-Control-Allow-Origin: *');
