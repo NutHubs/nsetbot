@@ -130,11 +130,15 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$mydata = json_decode($data["chkOTResult"],true); 
     	
 	$strData = "OT OF TODAY \n -------------------------- \n";
+	$strCount = 0;
 	  
 	foreach ($mydata as $result)
 	{
 		$strData = $strData.$result["Shop_name"]." : ".$result["Total"]."\n";
+		$strCount += (int)$result['Total'];
 	}
+	  
+	$strData = $strData."\n Total : ".$strCount;
 	
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
