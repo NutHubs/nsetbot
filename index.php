@@ -129,7 +129,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$data = $client->call('chkOT');
 	$mydata = json_decode($data["chkOTResult"],true); 
     	
-	$strData = "OT of Today \n";
+	$strData = "OT OF TODAY \n -------------------------- \n";
 	  
 	foreach ($mydata as $result)
 	{
