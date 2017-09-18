@@ -133,7 +133,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	  
 	foreach ($mydata as $result)
 	{
-		$strData += $result["Shop_name"]." : ".$result["Total"]." person \n";
+		$strData = $strData.$result["Shop_name"]." : ".$result["Total"]." person \n";
 	}
 	
     	$arrPostData = array();
