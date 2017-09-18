@@ -129,11 +129,11 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$data = $client->call('chkOT');
 	$mydata = json_decode($data["chkOTResult"],true); 
     	
-	$strData = "";
+	$strData = "OT of Today \n";
 	  
 	foreach ($mydata as $result)
 	{
-		$strData = $strData.$result["Shop_name"]." : ".$result["Total"]." person \n";
+		$strData = $strData.$result["Shop_name"]." : ".$result["Total"]."\n";
 	}
 	
     	$arrPostData = array();
