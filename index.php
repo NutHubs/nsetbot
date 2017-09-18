@@ -131,9 +131,9 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	
 	$strData = "";
 	  
-	while($mydata)  
+	foreach ($mydata as $result)
 	{
-		$strData += $mydata[0]['Shop_name']." : ".$mydata[0]['Total']." person \n" ;
+		$strData += $result["Shop_name"]." : ".$result["Total"]." person \n";
 	}
 	
     	$arrPostData = array();
