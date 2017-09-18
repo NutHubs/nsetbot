@@ -128,11 +128,18 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$client = new nusoap_client("http://223.27.205.134:12000/Administration/nset_getdata.asmx?wsdl",true); 
 	$data = $client->call('chkOT');
 	$mydata = json_decode($data["chkOTResult"],true); 
-    
+    	
+	$strData = "";
+	  
+	foreach($mydata as $value)
+	{
+		$strData += $value[0]['Shop_name']." : ".$value[0]['Total']." person/n" 
+	}
+	
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     	$arrPostData['messages'][0]['type'] = "text";
-    	$arrPostData['messages'][0]['text'] = "OT : ".$mydata[0]['Total']." person";
+    	$arrPostData['messages'][0]['text'] = $strData;
 	  
   }
   else if(strtoupper($_msg) == "MDB1")
