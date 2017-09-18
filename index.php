@@ -129,7 +129,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$data = $client->call('chkOT');
 	$mydata = json_decode($data["chkOTResult"],true); 
     	
-	$strData = "OT OF TODAY \n -------------------------- \n";
+	$strData = "OT TODAY \n ------------------- \n";
 	$strCount = 0;
 	  
 	foreach ($mydata as $result)
@@ -138,12 +138,12 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 		$strCount += (int)$result['Total'];
 	}
 	  
-	$strData = $strData."\n Total : ".$strCount;
+	$strData = $strData."\n :: Total :: ".$strCount." person.";
 	
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     	$arrPostData['messages'][0]['type'] = "text";
-    	$arrPostData['messages'][0]['text'] = $strData." person.";
+    	$arrPostData['messages'][0]['text'] = $strData;
 	  
   }
   else if(strtoupper($_msg) == "MDB1")
