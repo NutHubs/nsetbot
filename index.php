@@ -274,8 +274,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     	$arrPostData['messages'][0]['type'] = "image";
-    	$arrPostData['messages'][0]['originalContentUrl'] = "http://www.zwgearbox.com/UploadFiles/FCK/2015-07/Nidec-logo-eps-vector-image.png";
-	$arrPostData['messages'][0]['previewImageUrl'] = "http://www.zwgearbox.com/UploadFiles/FCK/2015-07/Nidec-logo-eps-vector-image.png";
+    	$arrPostData['messages'][0]['originalContentUrl'] = "https://www.partsit.com/img/manufacturers/nidec.png";
+	$arrPostData['messages'][0]['previewImageUrl'] = "https://www.partsit.com/img/manufacturers/nidec.png";
 	  
   }
   else
