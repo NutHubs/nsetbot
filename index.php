@@ -273,8 +273,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     	$arrPostData['messages'][0]['type'] = "image";
-    	$arrPostData['messages'][0]['originalContentUrl'] = "http://223.27.205.134:12000/emp_image/070001.jpg";
-	$arrPostData['messages'][0]['previewImageUrl'] = "http://223.27.205.134:12000/emp_image/070001.jpg";
+    	$arrPostData['messages'][0]['originalContentUrl'] = "http://vtown.vn/uploads/company/9/05082013/thumbnail/Nidec%20Servo%20Vietnam.jpg";
+	$arrPostData['messages'][0]['previewImageUrl'] = "http://vtown.vn/uploads/company/9/05082013/thumbnail/Nidec%20Servo%20Vietnam.jpg";
 	  
   }
   else
