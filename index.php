@@ -265,9 +265,21 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData['messages'][0]['type'] = "text";
     	$arrPostData['messages'][0]['text'] = "Try again !";
     }
+	  
     
   }
-    else{
+  else if(strtoupper($_msg) == "NUT")
+  {
+	  
+    	$arrPostData = array();
+    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    	$arrPostData['messages'][0]['type'] = "image";
+    	$arrPostData['messages'][0]['originalContentUrl'] = "http://www.zwgearbox.com/UploadFiles/FCK/2015-07/Nidec-logo-eps-vector-image.png";
+	$arrPostData['messages'][0]['previewImageUrl'] = "http://www.zwgearbox.com/UploadFiles/FCK/2015-07/Nidec-logo-eps-vector-image.png";
+	  
+  }
+  else
+  {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
