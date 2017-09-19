@@ -275,8 +275,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$arrPostData['messages'][0]['type'] = "text";
    	$arrPostData['messages'][0]['text'] = 'ชีสสสสสสสสสสสสสสสสสสสสสสสสส';
     	$arrPostData['messages'][1]['type'] = "image";
-    	$arrPostData['messages'][1]['originalContentUrl'] = "http://www.nidec.com/en-Global/corporate/news/2013/news0327-01/~/media/nidec-com/en-global/ir/news/2013/news0327-01/0327_03";
-	$arrPostData['messages'][1]['previewImageUrl'] = "http://www.nidec.com/en-Global/corporate/news/2013/news0327-01/~/media/nidec-com/en-global/ir/news/2013/news0327-01/0327_03";
+    	$arrPostData['messages'][1]['originalContentUrl'] = "https://github.com/NutHubs/nsetbot/blob/master/emp_images/070001.JPG";
+	$arrPostData['messages'][1]['previewImageUrl'] = "https://github.com/NutHubs/nsetbot/blob/master/emp_images/070001.JPG";
 	  
   }
   else
