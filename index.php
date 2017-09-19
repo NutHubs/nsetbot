@@ -272,9 +272,11 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   {	  
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    	$arrPostData['messages'][0]['type'] = "image";
-    	$arrPostData['messages'][0]['originalContentUrl'] = "https://www.partsit.com/img/manufacturers/nidec.png";
-	$arrPostData['messages'][0]['previewImageUrl'] = "https://www.partsit.com/img/manufacturers/nidec.png";
+	$arrPostData['messages'][0]['type'] = "text";
+   	$arrPostData['messages'][0]['text'] = 'ชีสสสสสสสสสสสสสสสสสสสสสสสสส';
+    	$arrPostData['messages'][1]['type'] = "image";
+    	$arrPostData['messages'][1]['originalContentUrl'] = "https://www.partsit.com/img/manufacturers/nidec.png";
+	$arrPostData['messages'][1]['previewImageUrl'] = "https://www.partsit.com/img/manufacturers/nidec.png";
 	  
   }
   else
