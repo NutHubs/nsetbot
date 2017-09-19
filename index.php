@@ -275,8 +275,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$arrPostData['messages'][0]['type'] = "text";
    	$arrPostData['messages'][0]['text'] = 'ชีสสสสสสสสสสสสสสสสสสสสสสสสส';
     	$arrPostData['messages'][1]['type'] = "image";
-    	$arrPostData['messages'][1]['originalContentUrl'] = "https://www.dropbox.com/home/emp_image?preview=070001.JPG";
-	$arrPostData['messages'][1]['previewImageUrl'] = "https://www.dropbox.com/home/emp_image?preview=070001.JPG";
+    	$arrPostData['messages'][1]['originalContentUrl'] = "https://www.dropbox.com/s/tp48bl4acmbmvdd/070001.JPG";
+	$arrPostData['messages'][1]['previewImageUrl'] = "https://www.dropbox.com/s/tp48bl4acmbmvdd/070001.JPG";
 	  
   }
   else
