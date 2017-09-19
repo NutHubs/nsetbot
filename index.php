@@ -275,8 +275,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$arrPostData['messages'][0]['type'] = "text";
    	$arrPostData['messages'][0]['text'] = 'ชีสสสสสสสสสสสสสสสสสสสสสสสสส';
     	$arrPostData['messages'][1]['type'] = "image";
-    	$arrPostData['messages'][1]['originalContentUrl'] = "http://www.baldor.com/api/categories/103/image?bc=white&as=1&h=256&w=256";
-	$arrPostData['messages'][1]['previewImageUrl'] = "http://www.baldor.com/api/categories/103/image?bc=white&as=1&h=256&w=256";
+    	$arrPostData['messages'][1]['originalContentUrl'] = "https://pbs.twimg.com/profile_images/729951888888696832/e4wiq-fk.jpg";
+	$arrPostData['messages'][1]['previewImageUrl'] = "https://pbs.twimg.com/profile_images/729951888888696832/e4wiq-fk.jpg";
 	  
   }
   else
