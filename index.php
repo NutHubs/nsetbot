@@ -275,8 +275,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$arrPostData['messages'][0]['type'] = "text";
    	$arrPostData['messages'][0]['text'] = 'ชีสสสสสสสสสสสสสสสสสสสสสสสสส';
     	$arrPostData['messages'][1]['type'] = "image";
-    	$arrPostData['messages'][1]['originalContentUrl'] = "https://www.partsit.com/img/manufacturers/nidec.png";
-	$arrPostData['messages'][1]['previewImageUrl'] = "https://www.partsit.com/img/manufacturers/nidec.png";
+    	$arrPostData['messages'][1]['originalContentUrl'] = "http://223.27.205.134:12000/emp_image/070001.jpg";
+	$arrPostData['messages'][1]['previewImageUrl'] = "http://223.27.205.134:12000/emp_image/070001.jpg";
 	  
   }
   else
