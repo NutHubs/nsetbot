@@ -1,5 +1,6 @@
 <?php
-$img = 'http://223.27.205.134:12000/emp_image/070001.jpg';
+$strID = (string)$_GET['empid'];
+$img = 'http://223.27.205.134:12000/emp_image/'.$strID.'.jpg';
 $fp = fopen($img, 'rb');
 
 header('Content-type: image/jpeg;');
