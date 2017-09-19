@@ -122,6 +122,10 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData['messages'][0]['type'] = "text";
     	$arrPostData['messages'][0]['text'] = "Name : ".$mydata[0]['description']."\n Position : ".$mydata[0]['position']."\n Section : ".$mydata[0]['section_name'];
 	  
+	$arrPostData['messages'][1]['type'] = "image";
+    	$arrPostData['messages'][1]['originalContentUrl'] = "https://nsetbot.herokuapp.com/showimage.php?empid=".(string)$arrMsg[1];
+	$arrPostData['messages'][1]['previewImageUrl'] = "https://nsetbot.herokuapp.com/showimage.php?empid=".(string)$arrMsg[1];
+	  
   }
   else if(strtoupper($_msg) == "OT")
   {
