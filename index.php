@@ -273,10 +273,10 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 	$arrPostData['messages'][0]['type'] = "text";
-   	$arrPostData['messages'][0]['text'] = 'ชีสสสสสสสสสสสสสสสสสสสสสสสสส';
+   	$arrPostData['messages'][0]['text'] = 'ชีสสสสสสสส';
     	$arrPostData['messages'][1]['type'] = "image";
-    	$arrPostData['messages'][1]['originalContentUrl'] = "https://github.com/NutHubs/nsetbot/blob/master/emp_images/070001.JPG";
-	$arrPostData['messages'][1]['previewImageUrl'] = "https://github.com/NutHubs/nsetbot/blob/master/emp_images/070001.JPG";
+    	$arrPostData['messages'][1]['originalContentUrl'] = "https://image.ibb.co/iVQkg5/NxN.jpg";
+	$arrPostData['messages'][1]['previewImageUrl'] = "https://image.ibb.co/iVQkg5/NxN.jpg";
 	  
   }
   else
