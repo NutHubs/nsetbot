@@ -275,8 +275,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$arrPostData['messages'][0]['type'] = "text";
    	$arrPostData['messages'][0]['text'] = 'ชีสสสสสสสสสสสสสสสสสสสสสสสสส';
     	$arrPostData['messages'][1]['type'] = "image";
-    	$arrPostData['messages'][1]['originalContentUrl'] = "http://223.27.205.134:12000/emp_image/070001.jpg";
-	$arrPostData['messages'][1]['previewImageUrl'] = "http://223.27.205.134:12000/emp_image/070001.jpg";
+    	$arrPostData['messages'][1]['originalContentUrl'] = "http://vtown.vn/uploads/company/9/05082013/thumbnail/Nidec%20Servo%20Vietnam.jpg";
+	$arrPostData['messages'][1]['previewImageUrl'] = "http://vtown.vn/uploads/company/9/05082013/thumbnail/Nidec%20Servo%20Vietnam.jpg";
 	  
   }
   else
