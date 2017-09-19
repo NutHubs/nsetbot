@@ -269,13 +269,12 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     
   }
   else if(strtoupper($_msg) == "NUT")
-  {
-	  
+  {	  
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     	$arrPostData['messages'][0]['type'] = "image";
-    	$arrPostData['messages'][0]['originalContentUrl'] = "https://www.partsit.com/img/manufacturers/nidec.png";
-	$arrPostData['messages'][0]['previewImageUrl'] = "https://www.partsit.com/img/manufacturers/nidec.png";
+    	$arrPostData['messages'][0]['originalContentUrl'] = "http://223.27.205.134:12000/emp_image/070001.jpg";
+	$arrPostData['messages'][0]['previewImageUrl'] = "http://223.27.205.134:12000/emp_image/070001.jpg";
 	  
   }
   else
