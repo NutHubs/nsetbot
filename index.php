@@ -275,8 +275,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$arrPostData['messages'][0]['type'] = "text";
    	$arrPostData['messages'][0]['text'] = 'ชีสสสสสสสสสสสสสสสสสสสสสสสสส';
     	$arrPostData['messages'][1]['type'] = "image";
-    	$arrPostData['messages'][1]['originalContentUrl'] = "https://pbs.twimg.com/profile_images/729951888888696832/e4wiq-fk.jpg";
-	$arrPostData['messages'][1]['previewImageUrl'] = "https://pbs.twimg.com/profile_images/729951888888696832/e4wiq-fk.jpg";
+    	$arrPostData['messages'][1]['originalContentUrl'] = "http://www.motor-chinese.com/Uploads/55968c45c4970.jpg";
+	$arrPostData['messages'][1]['previewImageUrl'] = "http://www.motor-chinese.com/Uploads/55968c45c4970.jpg";
 	  
   }
   else
