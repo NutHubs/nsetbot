@@ -275,8 +275,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$arrPostData['messages'][0]['type'] = "text";
    	$arrPostData['messages'][0]['text'] = 'ชีสสสสสสสส';
     	$arrPostData['messages'][1]['type'] = "image";
-    	$arrPostData['messages'][1]['originalContentUrl'] = "https://image.ibb.co/iVQkg5/NxN.jpg";
-	$arrPostData['messages'][1]['previewImageUrl'] = "https://image.ibb.co/iVQkg5/NxN.jpg";
+    	$arrPostData['messages'][1]['originalContentUrl'] = "https://nsetbot.herokuapp.com/showimage.php";
+	$arrPostData['messages'][1]['previewImageUrl'] = "https://nsetbot.herokuapp.com/showimage.php";
 	  
   }
   else
