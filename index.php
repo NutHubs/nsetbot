@@ -166,6 +166,21 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['text'] = "MDB1\n----------\n Frequency : ".((int)$arrData[16] / 100)." Hz. \n PowerFactor : ".$arrData[15]."\n K watt : ".number_format($arrData[14])." Kw \n ECP(R) : ".number_format($arrData[1])." Amp";
 	  
   }
+  else if(strtoupper($_msg) == "MDB4")
+  {
+    header('Access-Control-Allow-Origin: *');
+    $url = "https://api.netpie.io/topic/SmartpowerMeter/electricroom/metermdb4?retain&auth=5tsipuvi6tRjgOX:Y9p0oR3bjlSCiVyNK5PlSNNFY";
+    $response = file_get_contents($url);
+    $obj = json_decode($response, true);
+    $strData = $obj[0]['payload'];
+    $arrData = explode("|", $strData);
+    
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = "MDB4\n----------\n Frequency : ".((int)$arrData[16] / 100)." Hz. \n PowerFactor : ".$arrData[15]."\n K watt : ".number_format($arrData[14])." Kw \n Electric Current Phase(R) : ".number_format($arrData[1])." Amp \n Electric Current Phase(S) : ".number_format($arrData[4])." Amp";
+	  
+  }
   else if(strtoupper($_msg) == "WM100" || strpos(strtoupper($_msg), "PROD") !== false && strpos(strtoupper($_msg), "WM100") !== false)
   {
     header('Access-Control-Allow-Origin: *');
