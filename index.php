@@ -163,7 +163,26 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "MDB1\n----------\n Frequency : ".((int)$arrData[16] / 100)." Hz. \n PowerFactor : ".$arrData[15]."\n K watt : ".number_format($arrData[14])." Kw \n ECP(R) : ".number_format($arrData[1])." Amp";
+    $arrPostData['messages'][0]['text'] = "MDB1\n----------\n Frequency : ".((int)$arrData[16] / 100)." Hz. \n PowerFactor : ".$arrData[15]."\n K watt : ".number_format($arrData[14])." Kw \n EC Phase(R) : ".number_format($arrData[1])." Amp";
+	  
+  }
+  else if(strtoupper($_msg) == "MDB3")
+  {
+    header('Access-Control-Allow-Origin: *');
+    $url = "https://api.netpie.io/topic/SmartpowerMeter/electricroom/metermdb3?retain&auth=5tsipuvi6tRjgOX:Y9p0oR3bjlSCiVyNK5PlSNNFY";
+    $response = file_get_contents($url);
+    $obj = json_decode($response, true);
+    $strData = $obj[0]['payload'];
+    $arrData = explode("|", $strData);
+    
+    $varData = "MDB3\n----------\n Frequency : ".((int)$arrData[16] / 100)." Hz. \n PowerFactor : ".$arrData[15]."\n K watt : ".number_format($arrData[14])." Kw \n";
+    $varData = $varData."EC Phase(R) : ".number_format($arrData[])." Amp \n EC Phase(S) : ".number_format($arrData[4])." Amp \n EC Phase(T) : ".number_format($arrData[7])." Amp \n";
+    $varData = $varData."Voltage phase R - S : ".number_format(((int)$arrData[3]/10))." V \n"."Voltage phase S - T : ".number_format(((int)$arrData[6]/10))." V \n"."Voltage phase T - R : ".number_format(((int)$arrData[9]/10))." V \n";
+	  
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = $varData;
 	  
   }
   else if(strtoupper($_msg) == "MDB4")
@@ -178,7 +197,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "MDB4\n----------\n Frequency : ".((int)$arrData[16] / 100)." Hz. \n PowerFactor : ".$arrData[15]."\n K watt : ".number_format($arrData[14])." Kw \n Electric Current Phase(R) : ".number_format($arrData[1])." Amp \n Electric Current Phase(S) : ".number_format($arrData[4])." Amp";
+    $arrPostData['messages'][0]['text'] = "MDB4\n----------\n Frequency : ".((int)$arrData[16] / 100)." Hz. \n PowerFactor : ".$arrData[15]."\n K watt : ".number_format($arrData[14])." Kw \n EC Phase(R) : ".number_format($arrData[1])." Amp \n EC Phase(S) : ".number_format($arrData[4])." Amp";
 	  
   }
   else if(strtoupper($_msg) == "WM100" || strpos(strtoupper($_msg), "PROD") !== false && strpos(strtoupper($_msg), "WM100") !== false)
