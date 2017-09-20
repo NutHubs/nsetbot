@@ -176,8 +176,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrData = explode("|", $strData);
     
     $varData = "MDB3\n----------\n Frequency : ".((int)$arrData[16] / 100)." Hz. \n PowerFactor : ".$arrData[15]."\n K watt : ".number_format($arrData[14])." Kw \n";
-    $varData = $varData."EC Phase(R) : ".number_format($arrData[])." Amp \n EC Phase(S) : ".number_format($arrData[4])." Amp \n EC Phase(T) : ".number_format($arrData[7])." Amp \n";
-    $varData = $varData."Voltage phase R - S : ".number_format(((int)$arrData[3]/10))." V \n"."Voltage phase S - T : ".number_format(((int)$arrData[6]/10))." V \n"."Voltage phase T - R : ".number_format(((int)$arrData[9]/10))." V \n";
+    $varData = $varData."EC Phase(R) : ".number_format($arrData[1])." Amp \n EC Phase(S) : ".number_format($arrData[4])." Amp \n EC Phase(T) : ".number_format($arrData[7])." Amp \n";
+    $varData = $varData."Voltage phase R - S : ".number_format(((int)$arrData[3]/10))." V \n"."Voltage phase S - T : ".number_format(((int)$arrData[6]/10))." V \n"."Voltage phase T - R : ".number_format(((int)$arrData[9]/10))." V";
 	  
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
