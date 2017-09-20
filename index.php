@@ -283,6 +283,18 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$arrPostData['messages'][1]['previewImageUrl'] = "https://nsetbot.herokuapp.com/showimage.php";
 	  
   }
+  else if(strpos(strtoupper($_msg), "หร๊อยหร่อย") !== false)
+  {	  
+    	$arrPostData = array();
+    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+	$arrPostData['messages'][0]['type'] = "text";
+   	$arrPostData['messages'][0]['text'] = 'อร่อยที่สุดในโลกเลยหล่ะ';
+	  
+    	$arrPostData['messages'][1]['type'] = "sticker";
+    	$arrPostData['messages'][1]['packageId'] = "2";
+	$arrPostData['messages'][1]['stickerId'] = "172";
+	  
+  }
   else
   {
     $arrPostData = array(); 
