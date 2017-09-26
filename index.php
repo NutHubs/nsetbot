@@ -230,11 +230,25 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     
     date_default_timezone_set("Asia/Bangkok");
     $strH = date('H');
+    $strUPH = 0;
+	  
+    if((int)$strH >= 8 && (int)$strH <= 18)
+    {
+    	$strUPH = (int)$strH - 18;
+    }
+    else if((int)$strH >= 20 && (int)$strH <= 23)
+    {
+	$strUPH = (int)$strH - 24;
+    }
+    else if((int)$strH >= 0 && (int)$strH <= 6)
+    {
+	$strUPH = (int)$strH + 4;
+    }
 	  
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "LINE WM100 \n -------------------------- \n OK : ".number_format($arrWM100[1])." Pcs.\n NG : ".number_format($arrWM100[2])." Pcs.\n TOTAL : ".number_format($arrWM100[3])." Pcs.\n"."--------------------------\n UPH : ".(string)$strH;
+    $arrPostData['messages'][0]['text'] = "LINE WM100 \n -------------------------- \n OK : ".number_format($arrWM100[1])." Pcs.\n NG : ".number_format($arrWM100[2])." Pcs.\n TOTAL : ".number_format($arrWM100[3])." Pcs.\n"."--------------------------\n UPH : ".(string)$strUPH;
   }
   else if(strtoupper($_msg) == "WM100 OEE" || strpos(strtoupper($_msg), "WM100") !== false && strpos(strtoupper($_msg), "OEE") !== false)
   {
