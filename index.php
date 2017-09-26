@@ -248,7 +248,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "LINE WM100 \n -------------------------- \n OK : ".number_format($arrWM100[1])." Pcs.\n NG : ".number_format($arrWM100[2])." Pcs.\n TOTAL : ".number_format($arrWM100[3])." Pcs.\n"."--------------------------\n UPH : ".(string)$strUPH;
+    $arrPostData['messages'][0]['text'] = "LINE WM100 \n -------------------------- \n OK : ".number_format($arrWM100[1])." Pcs.\n NG : ".number_format($arrWM100[2])." Pcs.\n TOTAL : ".number_format($arrWM100[3])." Pcs.\n"."--------------------------\n UPH : ".(string)((int)$arrWM100[3] / $strUPH);
   }
   else if(strtoupper($_msg) == "WM100 OEE" || strpos(strtoupper($_msg), "WM100") !== false && strpos(strtoupper($_msg), "OEE") !== false)
   {
