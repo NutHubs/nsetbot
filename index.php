@@ -234,7 +234,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	  
     if((int)$strH >= 8 && (int)$strH <= 18)
     {
-    	$strUPH = (18 - (int)$strH) - 8;
+    	$strUPH = 18 - (int)$strH;
     }
     else if((int)$strH >= 20 && (int)$strH <= 23)
     {
