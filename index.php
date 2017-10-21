@@ -105,6 +105,22 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData['messages'][0]['type'] = "text";
     	$arrPostData['messages'][0]['text'] = "TODAY Holiday : ".$mydata[0]['Total']." person.";
 	  
+  }  
+  //Holiday personal
+  else if(ereg("^(HOLIDAY[[:space:]])([0-9][0-9][0-9][0-9][0-9][0-9])$", strtoupper($_msg)) == true)
+  {
+	include("lib/nusoap.php");
+	$client = new nusoap_client("http://223.27.205.134:12000/Administration/nset_getdata.asmx?wsdl",true); 
+	$arrMsg = explode(" ", $_msg);
+	$params = array('empID' => (string)$arrMsg[1]);
+	$data = $client->call('chkHolidayPersonal', $params);
+	$mydata = json_decode($data["chkHolidayPersonalResult"],true); 
+    
+    	$arrPostData = array();
+    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    	$arrPostData['messages'][0]['type'] = "text";
+    	$arrPostData['messages'][0]['text'] = $mydata[0]['Total']." sure";	  
+	  
   }
   //who emoployee id
   else if(ereg("^(WHO[[:space:]])([0-9][0-9][0-9][0-9][0-9][0-9])$", strtoupper($_msg)) == true)
