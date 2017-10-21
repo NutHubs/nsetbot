@@ -72,13 +72,13 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $url = "https://api.netpie.io/feed/aircond011withfeed007?apikey=oSHt1BDhi5VLw9nMaRGWcNp02uAXjJQu&granularity=15second&since=3day";
     $response = file_get_contents($url);
     $obj = json_decode($response, true);
-    $strTemp = $obj.lastest_data[1].values[0][1];
+    $strTemp = $obj[2]['lastest_data'];
     //$arrTemp = explode("|", $strTemp);
     
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "Office temp : \n".$strTemp." °C";
+    $arrPostData['messages'][0]['text'] = "Office temp : \n".$strTemp[1]." °C";
   }
   else if(strtoupper($_msg) == "QC TEMP" || strtoupper($_msg) == "QC TEMPERATURE")
   {
