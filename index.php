@@ -69,10 +69,10 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   else if(strtoupper($_msg) == "OFFICE TEMP" || strtoupper($_msg) == "OFFICE TEMPERATURE")
   {
     header('Access-Control-Allow-Origin: *');
-    $url = "https://api.netpie.io/feed/aircond011withfeed007?apikey=oSHt1BDhi5VLw9nMaRGWcNp02uAXjJQu&granularity=15second&since=3day";
+    $url = "https://api.netpie.io/feed/aircond011withfeed007?apikey=oSHt1BDhi5VLw9nMaRGWcNp02uAXjJQu&granularity=15second&since=1day";
     $response = file_get_contents($url);
     $obj = json_decode($response, true);
-    $strTemp = $obj[1]['lastest_data'];
+    $strTemp = $obj[0]['lastest_data'];
     //$arrTemp = explode("|", $strTemp);
     
     $arrPostData = array();
