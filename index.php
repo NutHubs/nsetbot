@@ -78,7 +78,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "Office temp : \n".$strTemp[1]." °C";
+    $arrPostData['messages'][0]['text'] = "Office temp : \n".$strTemp[1]['values'][1]." °C";
   }
   else if(strtoupper($_msg) == "QC TEMP" || strtoupper($_msg) == "QC TEMPERATURE")
   {
