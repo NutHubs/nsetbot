@@ -69,7 +69,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   else if(strtoupper($_msg) == "OFFICE TEMP" || strtoupper($_msg) == "OFFICE TEMPERATURE")
   {
     header('Access-Control-Allow-Origin: *');
-    $url = "https://api.netpie.io/feed/aircond011withfeed007?apikey=oSHt1BDhi5VLw9nMaRGWcNp02uAXjJQu&granularity=15second&since=10day";
+    $url = "https://api.netpie.io/feed/aircond011withfeed007?apikey=oSHt1BDhi5VLw9nMaRGWcNp02uAXjJQu&granularity=15second&since=3day";
     $response = file_get_contents($url);
     $obj = json_decode($response, true);
     $strTemp = $obj[0]['payload'];
@@ -78,7 +78,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "OFFICE temp : \n".$strTemp." °C";
+    $arrPostData['messages'][0]['text'] = "Office temp : \n".$strTemp." °C";
   }
   else if(strtoupper($_msg) == "QC TEMP" || strtoupper($_msg) == "QC TEMPERATURE")
   {
