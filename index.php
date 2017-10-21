@@ -133,7 +133,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     	$arrPostData['messages'][0]['type'] = "text";
-    	$arrPostData['messages'][0]['text'] = $mydata[0]." sure";	  
+    	$arrPostData['messages'][0]['text'] = $mydata[0]['Total']." sure";	  
 	  
   }
   //who emoployee id
