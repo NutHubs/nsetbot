@@ -385,11 +385,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	  
   }
   else if(strtoupper($_msg) == "XXX")
-  {	
-	$json_string = file_get_contents('php://input');
-	$json_object = json_decode($json_string, true);  
-	  
-	$message_text = $json_object->{"events"}[0]->{"message"}->{"text"};
+  {		  
+	$message_text = $arrJson->{"events"}[0]->{"message"}->{"text"};
 	  	  
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
