@@ -385,11 +385,14 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	  
   }
   else if(strtoupper($_msg) == "LINE ID")
-  {	  
+  {	
+	$json_string = file_get_contents('php://input');
+	$json_object = json_decode($json_string);  
+	  
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 	$arrPostData['messages'][0]['type'] = "text";
-   	$arrPostData['messages'][0]['text'] = $_msg->getFromMid();
+   	$arrPostData['messages'][0]['text'] = $json_object;
 	  
   }
   else
