@@ -386,7 +386,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   }
   else if(strtoupper($_msg) == "XXX")
   {		  
-	$message_text = $arrJson->{"events"}[0]->{"message"}->{"text"};
+	$message_text = $arrJson['events'][0]['timestamp'];
 	  	  
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
