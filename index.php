@@ -388,11 +388,11 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   {	
 	$json_string = file_get_contents('php://input');
 	$json_object = json_decode($json_string, true);  
-	  
+	  	  
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 	$arrPostData['messages'][0]['type'] = "text";
-   	$arrPostData['messages'][0]['text'] = '555';
+   	$arrPostData['messages'][0]['text'] = $json_object->{"events"}[0]->{"message"}->{"text"};
 	  
   }
   else
