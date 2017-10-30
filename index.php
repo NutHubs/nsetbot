@@ -384,6 +384,14 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$arrPostData['messages'][1]['stickerId'] = "172";
 	  
   }
+  else if(strtoupper($_msg) == "LINE ID")
+  {	  
+    	$arrPostData = array();
+    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+	$arrPostData['messages'][0]['type'] = "user";
+   	$arrPostData['messages'][0]['userId'] = message;
+	  
+  }
   else
   {
     $arrPostData = array(); 
