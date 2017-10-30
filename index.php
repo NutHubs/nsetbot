@@ -404,11 +404,18 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$arrHeader = array();
 	$arrHeader[] = "Content-Type: application/json";
 	$arrHeader[] = "Authorization: Bearer {$strAccessTokenPush}";
- 
+ 	
+	$strMID1 = $arrJson['events'][0]['message']['originalContentUrl'];
+	$strMID2 = $arrJson['events'][0]['message']['previewImageUrl'];
+	  
 	$arrPostData = array();
 	$arrPostData['to'] = "Uaf136cf40f4f7a2c1bedacc48fa7622b"; //USER ID
-	$arrPostData['messages'][0]['type'] = "text";
-	$arrPostData['messages'][0]['text'] = "ทดสอบ Push Message : ".$_msg;
+	//$arrPostData['messages'][0]['type'] = "text";
+	//$arrPostData['messages'][0]['text'] = "ทดสอบ Push Message : ".$_msg;
+	$arrPostData['messages'][0]['type'] = "image";
+    	$arrPostData['messages'][0]['originalContentUrl'] = $strMID1;
+	$arrPostData['messages'][0]['previewImageUrl'] = $strMID2;
+	  
  
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL,$strUrlPush);
