@@ -408,7 +408,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$arrPostData = array();
 	$arrPostData['to'] = "Uaf136cf40f4f7a2c1bedacc48fa7622b"; //USER ID
 	$arrPostData['messages'][0]['type'] = "text";
-	$arrPostData['messages'][0]['text'] = "ทดสอบ Push Message";
+	$arrPostData['messages'][0]['text'] = "ทดสอบ Push Message".$_msg;
  
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL,$strUrlPush);
