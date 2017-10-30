@@ -388,8 +388,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   {	  
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-	$arrPostData['messages'][0]['type'] = "user";
-   	$arrPostData['messages'][0]['userId'] = message;
+	$arrPostData['messages'][0]['type'] = "text";
+   	$arrPostData['messages'][0]['text'] = $_msg->getFromMid();
 	  
   }
   else
