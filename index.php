@@ -384,15 +384,15 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$arrPostData['messages'][1]['stickerId'] = "172";
 	  
   }
-  else if(strtoupper($_msg) == "LINE ID")
+  else if(strtoupper($_msg) == "XXX")
   {	
 	$json_string = file_get_contents('php://input');
-	$json_object = json_decode($json_string);  
+	$json_object = json_decode($json_string, true);  
 	  
     	$arrPostData = array();
     	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 	$arrPostData['messages'][0]['type'] = "text";
-   	$arrPostData['messages'][0]['text'] = $json_object;
+   	$arrPostData['messages'][0]['text'] = $json_object[0]['userId'];
 	  
   }
   else
