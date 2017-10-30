@@ -384,7 +384,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$arrPostData['messages'][1]['stickerId'] = "172";
 	  
   }
-  else if(strtoupper($_msg) == "XXX")
+  else if(strtoupper($_msg) == "LINE ID")
   {		  
 	$message_text = $arrJson['events'][0]['source']['userId'];
 	  	  
