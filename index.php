@@ -428,10 +428,37 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   }
   else
   {
-    	$arrPostData = array(); 
-    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    	$arrPostData['messages'][0]['type'] = "text";
-    	$arrPostData['messages'][0]['text'] = 'คุณสามารถสอนบอทให้ฉลาดขึ้นได้ เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
+    	//$arrPostData = array(); 
+    	//$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    	//$arrPostData['messages'][0]['type'] = "text";
+    	//$arrPostData['messages'][0]['text'] = 'คุณสามารถสอนบอทให้ฉลาดขึ้นได้ เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
+	  
+	$strUrlPush = "https://api.line.me/v2/bot/message/push";
+	$strAccessTokenPush = "6qu1XX+9fv8jsUMRV39GsMvl9qiO/RHYpkSH6H2DDEs4xPJ+TL5jSuB6vCpvxEEFXSZOQUs5DmFz8i938BpzeYuWnsIUkRooWQJmVr4Def9WAgyIvrbk+fSfdtlcxt9pc2qNTUF0CsaHVLHYOCIDJAdB04t89/1O/w1cDnyilFU=";	  
+	$arrHeader = array();
+	$arrHeader[] = "Content-Type: application/json";
+	$arrHeader[] = "Authorization: Bearer {$strAccessTokenPush}";
+ 	
+	$strMID1 = $arrJson['events'][0]['message']['id'];
+	$strMID2 = $arrJson['events'][0]['message']['type'];
+	  
+	$arrPostData = array();
+	$arrPostData['to'] = "Uaf136cf40f4f7a2c1bedacc48fa7622b"; //USER ID
+	//$arrPostData['messages'][0]['type'] = "text";
+	//$arrPostData['messages'][0]['text'] = "ทดสอบ Push Message : ".$_msg;
+	$arrPostData['messages'][0]['type'] = "text";
+    	$arrPostData['messages'][0]['text'] = $strMID1." | ".$strMID2;  
+ 
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL,$strUrlPush);
+	curl_setopt($ch, CURLOPT_HEADER, false);
+	curl_setopt($ch, CURLOPT_POST, true);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeader);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrPostData));
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	$result = curl_exec($ch);
+	curl_close ($ch);
 	  
    }
 	  
