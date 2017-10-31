@@ -412,7 +412,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
 	$arrPostData['to'] = "Uaf136cf40f4f7a2c1bedacc48fa7622b"; //USER ID
 	//$arrPostData['messages'][0]['type'] = "text";
 	//$arrPostData['messages'][0]['text'] = "ทดสอบ Push Message : ".$_msg;
-	$arrPostData['messages'][0]['type'] = "image";
+	$arrPostData['messages'][0]['type'] = "text";
     	$arrPostData['messages'][0]['text'] = $strMID1." | ".$strMID2;  
  
 	$ch = curl_init();
