@@ -18,7 +18,7 @@ $data = json_decode($json);
 $isData = sizeof($data);
 
 if (strpos($_msg, 'สอนบอท') !== false) {
-
+if (strpos($_msg, 'สอนเป็ด') !== false) {
     $x_tra = str_replace("สอนบอท","", $_msg);
     $pieces = explode("|", $x_tra);
     $_question=str_replace("[","",$pieces[0]);
@@ -45,7 +45,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่สอนบอท';
-
+	}
   }else{
     //find loop Json in db (Have data in db)
     if($isData > 0){
