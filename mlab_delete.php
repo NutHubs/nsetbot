@@ -1,7 +1,7 @@
 <?php
   $mid = "777";
   $api_key="_ZLyBX6InXGzrE-ki01xKzo-QyXHOwPN";
-  $url = 'https://api.mlab.com/api/1/databases/nsetbot_db/collections/linebot?apiKey='.$api_key.'&q={"mid":"'.$mid'"}';
+  $url = 'https://api.mlab.com/api/1/databases/nsetbot_db/collections/linebot?apiKey='.$api_key.'&q={"mid":"'.$mid.'"}';
   
   $opts = array('http' =>
     array(
