@@ -1,5 +1,5 @@
 <?php
-  $mid = "777";
+  $mid = "59f96b1cbd966f490aa3918d";
   $api_key="_ZLyBX6InXGzrE-ki01xKzo-QyXHOwPN";
   $url = 'https://api.mlab.com/api/1/databases/nsetbot_db/collections/linebot/'.$mid.'?apiKey='.$api_key;
   
