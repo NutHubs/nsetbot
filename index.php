@@ -466,8 +466,8 @@ else
       $returnValue = file_get_contents($url,false,$context);*/
 
      $json2 = file_get_contents('https://api.mlab.com/api/1/databases/nsetbot_db/collections/linebot?apiKey='.$api_key.'&q={"textX":"lineC"}');
-     $data2 = json_decode($json);
-     $isData2 = sizeof($data);
+     $data2 = json_decode($json2);
+     $isData2 = sizeof($data2);
      $xxx = "lineC";
 	  
      if($isData2 > 0){    
