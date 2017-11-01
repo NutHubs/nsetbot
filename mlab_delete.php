@@ -12,5 +12,5 @@
   
   $context = stream_context_create($opts);
   $returnVal = file_get_contents($url, false, $context);
-  echo "Deleted : ".returnVal;
+  echo "Deleted : ".$returnVal;
 ?>
