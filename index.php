@@ -470,7 +470,7 @@ else
      $isData2 = sizeof($data2);
      $xxx = "lineC";
 	  
-     if($isData2 > 0){    
+     //if($isData2 > 0){    
    	  foreach($xxx as $rec2)
        	  {
     	    $arrPostData = array();
@@ -478,7 +478,7 @@ else
 	    $arrPostData['messages'][0]['type'] = "text";
     	    $arrPostData['messages'][0]['text'] = $rec2->countX;
           }
-      }
+      //}
       
   }
   else
