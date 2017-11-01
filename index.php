@@ -471,13 +471,14 @@ else
 	  
      if($isData2 > 0){
      //alarm to GM
-   	  foreach($data2 as $rec2)
-       	  {
+   	  //foreach($data2 as $rec2)
+       	  //{
     	    $arrPostData = array();
     	    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 	    $arrPostData['messages'][0]['type'] = "text";
-    	    $arrPostData['messages'][0]['text'] = $rec2->countX;
-          }
+	    $arrPostData['messages'][0]['text'] = (string)$isData2;
+    	    //$arrPostData['messages'][0]['text'] = $rec2->countX;
+          //}
       }
       
   }
