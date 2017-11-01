@@ -446,11 +446,11 @@ else
   else if(strtoupper($_msg) == "DB")
   {
       /*Post New Data*/
-      /*$newData = json_encode(
+      $newData = json_encode(
         array(
           'mid' => '602457364',
-          'text'=> 'wm100 lineC overheat',
-	  'count'=> '1'
+          'textX'=> 'lineC',
+	  'countX'=> '1'
         )
       );
       
@@ -463,14 +463,14 @@ else
       );
       
       $context = stream_context_create($opts);
-      $returnValue = file_get_contents($url,false,$context);*/
+      $returnValue = file_get_contents($url,false,$context);
 
      $json2 = file_get_contents('https://api.mlab.com/api/1/databases/nsetbot_db/collections/linebot?apiKey='.$api_key.'&q={"textX":"lineC"}');
      $data2 = json_decode($json2);
      $isData2 = sizeof($data2);
-     $xxx = "lineC";
 	  
-     if($isData2 > 0){    
+     if($isData2 > 0){
+     //alarm to GM
    	  foreach($data2 as $rec2)
        	  {
     	    $arrPostData = array();
