@@ -448,8 +448,9 @@ else
       /*Post New Data*/
       $newData = json_encode(
         array(
-          'question' => 'บาบาบา',
-          'answer'=> 'บาบานานา'
+          'mid' => '602457364',
+          'text'=> 'wm100 lineC overheat',
+	  'count'=> '1'
         )
       );	 
       
