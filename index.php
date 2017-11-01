@@ -443,7 +443,7 @@ else
 	    $result = curl_exec($ch);
 	    curl_close ($ch);	  
   }
-  else if(strtoupper($_msg) == "db")
+  else if(strtoupper($_msg) == "DB")
   {
       /*Post New Data*/
       $newData = json_encode(
