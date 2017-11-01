@@ -18,7 +18,45 @@ $data = json_decode($json);
 $isData = sizeof($data);
 
 if (strpos($_msg, 'สอนบอท') !== false) {
-
+	if (strpos($_msg, 'สอนบอท') !== false) {
+	
+    $x_tra = str_replace("สอนบอท","", $_msg);
+    $pieces = explode("|", $x_tra);
+    $_question=str_replace("[","",$pieces[0]);
+    $_answer=str_replace("]","",$pieces[1]);
+	
+    //Post New Data
+    $newData = json_encode(
+      array(
+        'question' => $_question,
+        'answer'=> $_answer
+      )
+    );	  
+    $opts = array(
+      'http' => array(
+          'method' => "POST",
+          'header' => "Content-type: application/json",
+          'content' => $newData
+       )
+    );
+	  
+    $context = stream_context_create($opts);
+    $returnValue = file_get_contents($url,false,$context);
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = 'ขอบคุณที่สอนบอท';
+	}
+  }else{
+    //find loop Json in db (Have data in db)
+    if($isData > 0){
+   	foreach($data as $rec){
+    	  $arrPostData = array();
+    	  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+	  $arrPostData['messages'][0]['type'] = "text";
+    	  $arrPostData['messages'][0]['text'] = $rec->answer;
+	}
+    }
 	  
  }
 else{
@@ -394,32 +432,32 @@ else{
   }
   else
   {
-    	//$arrPostData = array(); 
-    	//$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    	//$arrPostData['messages'][0]['type'] = "text";
-    	//$arrPostData['messages'][0]['text'] = 'คุณสามารถสอนบอทให้ฉลาดขึ้นได้ เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
+    	$arrPostData = array(); 
+    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    	$arrPostData['messages'][0]['type'] = "text";
+    	$arrPostData['messages'][0]['text'] = 'คุณสามารถสอนบอทให้ฉลาดขึ้นได้ เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
 	  
-	$strUrlPush = "https://api.line.me/v2/bot/message/6919286473241/content";
-	$strAccessTokenPush = "6qu1XX+9fv8jsUMRV39GsMvl9qiO/RHYpkSH6H2DDEs4xPJ+TL5jSuB6vCpvxEEFXSZOQUs5DmFz8i938BpzeYuWnsIUkRooWQJmVr4Def9WAgyIvrbk+fSfdtlcxt9pc2qNTUF0CsaHVLHYOCIDJAdB04t89/1O/w1cDnyilFU=";	  
-	$arrHeader = array();
-	$arrHeader[] = "Content-Type: application/json";
-	$arrHeader[] = "Authorization: Bearer {$strAccessTokenPush}";
+	//$strUrlPush = "https://api.line.me/v2/bot/message/6919286473241/content";
+	//$strAccessTokenPush = "6qu1XX+9fv8jsUMRV39GsMvl9qiO/RHYpkSH6H2DDEs4xPJ+TL5jSuB6vCpvxEEFXSZOQUs5DmFz8i938BpzeYuWnsIUkRooWQJmVr4Def9WAgyIvrbk+fSfdtlcxt9pc2qNTUF0CsaHVLHYOCIDJAdB04t89/1O/w1cDnyilFU=";	  
+	//$arrHeader = array();
+	//$arrHeader[] = "Content-Type: application/json";
+	//$arrHeader[] = "Authorization: Bearer {$strAccessTokenPush}";
 
 	  
-    	$response1 = file_get_contents($url1);
-    	$obj1 = json_decode($response1, true);
-    	$strTarget = $obj1[0]['payload'];
+    	//$response1 = file_get_contents($url1);
+    	//$obj1 = json_decode($response1, true);
+    	//$strTarget = $obj1[0]['payload'];
     
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL,$strUrlPush);
-	curl_setopt($ch, CURLOPT_HEADER, false);
-	curl_setopt($ch, CURLOPT_GET, true);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeader);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrPostData));
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	$result = curl_exec($ch);
-	curl_close ($ch);
+	//$ch = curl_init();
+	//curl_setopt($ch, CURLOPT_URL,$strUrlPush);
+	//curl_setopt($ch, CURLOPT_HEADER, false);
+	//curl_setopt($ch, CURLOPT_GET, true);
+	//curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeader);
+	//curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrPostData));
+	//curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+	//curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	//$result = curl_exec($ch);
+	//curl_close ($ch);
 	  
    }
 	  
