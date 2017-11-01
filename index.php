@@ -452,7 +452,7 @@ else
           'text'=> 'wm100 lineC overheat',
 	  'count'=> '1'
         )
-      );	 
+      );
       
       $opts = array(
         'http' => array(
@@ -465,6 +465,17 @@ else
       $context = stream_context_create($opts);
       $returnValue = file_get_contents($url,false,$context);
       
+	$xxx = "wm100 lineC overheat";
+	  
+     if($isData > 0){    
+   	  foreach($xxx as $rec)
+       	  {
+    	    $arrPostData = array();
+    	    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+	    $arrPostData['messages'][0]['type'] = "text";
+    	    $arrPostData['messages'][0]['text'] = $rec->count;
+          }
+      }
       $arrPostData = array();
       $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
       $arrPostData['messages'][0]['type'] = "text";
