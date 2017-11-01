@@ -471,13 +471,13 @@ else
      $xxx = "lineC";
 	  
      if($isData2 > 0){    
-   	  //foreach($xxx as $rec2)
-       	  //{
+   	  foreach($data2 as $rec2)
+       	  {
     	    $arrPostData = array();
     	    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 	    $arrPostData['messages'][0]['type'] = "text";
-    	    $arrPostData['messages'][0]['text'] = "1";
-          //}
+    	    $arrPostData['messages'][0]['text'] = $rec2->countX;
+          }
       }
       
   }
