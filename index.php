@@ -218,43 +218,19 @@ else
     $arrPostData['messages'][0]['text'] = $mydata[0]['resultMsg'];	  
 	  
   }
-  else if(strtoupper($_msg) == "TMPMENU")
+  else if(strtoupper($_msg) == "TT")
   {	
-    $arrPostData = array();
-    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    $arrPostData['messages'][0]['type'] = "template";
-    $arrPostData['messages'][0]['altText'] = "Hello NSET";	
-    $arrPostData['messages'][0]['template'] = [
-  	'type' => 'buttons',
-  	'thumbnailImageUrl' => 'https://1.bp.blogspot.com/-U90M8DyKu7Q/W9EtONMCf6I/AAAAAAAAW_4/7L_jB_Rg9oweu2HKhULNdu9WNefw9zf9wCLcBGAs/s1600/sao-full.jpg',
-  	'imageAspectRatio' => 'rectangle',
-  	'imageSize' => 'cover',
-  	'imageBackgroundColor' => '#FFFFFF',
-  	'title' => 'แผ่นเกม Sword Art Online',
-  	'text' => 'กรุณาเลือก',
-  	'defaultAction' => [
-    	'type' => 'uri',
-    	'label' => 'View detail',
-    	'uri' => 'https://www.google.com',
-  	],
-  	'actions' => [
-    	0 => [
-      		'type' => 'postback',
-      		'label' => 'สั่งซื้อ',
-      		'data' => 'action=buy&itemid=123',
-    	],
-    	1 => [
-      		'type' => 'postback',
-      		'label' => 'เพิ่มลงรถเข็น',
-      		'data' => 'action=add&itemid=123',
-    	],
-    	2 => [
-      		'type' => 'uri',
-      		'label' => 'อ่านรายละเอียด',
-      		'uri' => 'https://www.google.com',
-    	],
-  ]
-  ];
+   	header('Access-Control-Allow-Origin: *');
+    	$url = "https://api.netpie.io/topic/SmartServerMonitor/ServerRoom1?retain&auth=OLfJOENYvYLmbqG:J0o3U9oywRvgnLtl5lLhscdJ5";
+    	$response = file_get_contents($url);
+    	$obj = json_decode($response, true);
+   	 $strTemp = $obj[0]['payload'];
+    	$arrTemp = explode("|", $strTemp);
+    
+    	$arrPostData = array();
+    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    	$arrPostData['messages'][0]['type'] = "text";
+    	$arrPostData['messages'][0]['text'] = "Server room temp : \n".$arrTemp[0]." °C";
   }
   else if(strtoupper($_msg) == "MDB1")
   {
