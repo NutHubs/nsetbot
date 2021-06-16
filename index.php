@@ -221,7 +221,7 @@ else
   else if(strtoupper($_msg) == "TMPMENU")
   {
 	$arrPostData = array();
-	$arrPostData['replyToken'] = $arrJson['event'][0]['replyToken'];
+    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 	  
 	$arrPostData['message'][0]['type'] = "template";
 	$arrPostData['message'][0]['altText'] = "Hello My Template";
