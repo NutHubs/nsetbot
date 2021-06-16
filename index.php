@@ -220,12 +220,26 @@ else
   }
   else if(strtoupper($_msg) == "TMPMENU")
   {
-	$arrPostData = array();
-    	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+	include("lib/nusoap.php");
+	  $client = new nusoap_client("http://223.27.205.134:12000/Administration/nset_getdata.asmx?wsdl",true); 
+	  $data = $client->call('chkOT');
+	  $mydata = json_decode($data["chkOTResult"],true); 
+    	
+	  $strData = "OT TODAY \n ----------------- \n";
+	  $strCount = 0;
 	  
-	$arrPostData['message'][0]['type'] = "template";
-	$arrPostData['message'][0]['altText'] = "Hello My Template";
-	$arrPostData['message'][0]['template'] = "HI";
+	  foreach ($mydata as $result)
+	  {
+		  $strData = $strData.$result["Shop_name"]." : ".$result["Total"]."\n";
+		  $strCount += (int)$result['Total'];
+	  }
+	  
+	  $strData = $strData."\n :: Total ::  ".$strCount." person.";
+	
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = $strData;
 	  
   }
   else if(strtoupper($_msg) == "MDB1")
