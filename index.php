@@ -225,37 +225,37 @@ else
 	  
 	$arrPostData['message'][0]['type'] = "template";
 	$arrPostData['message'][0]['altText'] = "Hello My Template";
-	$arrPostData['message'][0]['template'] = {
-        "type": "buttons",
-        "thumbnailImageUrl": "https://1.bp.blogspot.com/-U90M8DyKu7Q/W9EtONMCf6I/AAAAAAAAW_4/7L_jB_Rg9oweu2HKhULNdu9WNefw9zf9wCLcBGAs/s1600/sao-full.jpg",
-        "imageAspectRatio": "rectangle",
-        "imageSize": "cover",
-        "imageBackgroundColor": "#FFFFFF",
-        "title": "แผ่นเกม Sword Art Online",
-        "text": "กรุณาเลือก",
-        "defaultAction": {
-            "type": "uri",
-            "label": "View detail",
-            "uri": "https://www.google.com"
-        },
-        "actions": [
-            {
-              "type": "postback",
-              "label": "สั่งซื้อ",
-              "data": "action=buy&itemid=123"
-            },
-            {
-              "type": "postback",
-              "label": "เพิ่มลงรถเข็น",
-              "data": "action=add&itemid=123"
-            },
-            {
-              "type": "uri",
-              "label": "อ่านรายละเอียด",
-              "uri": "https://www.google.com"
-            }
-        ]
-    };
+	$arrPostData['message'][0]['template'] = [
+   		"type" => "buttons", 
+   		"thumbnailImageUrl" => "https://1.bp.blogspot.com/-U90M8DyKu7Q/W9EtONMCf6I/AAAAAAAAW_4/7L_jB_Rg9oweu2HKhULNdu9WNefw9zf9wCLcBGAs/s1600/sao-full.jpg", 
+   		"imageAspectRatio" => "rectangle", 
+  		"imageSize" => "cover", 
+   		"imageBackgroundColor" => "#FFFFFF", 
+   		"title" => "แผ่นเกม Sword Art Online", 
+   		"text" => "กรุณาเลือก", 
+   		"defaultAction" => [
+         	"type" => "uri", 
+         	"label" => "View detail", 
+         	"uri" => "https://www.google.com" 
+      		], 
+   		"actions" => [
+            		[
+               		"type" => "postback", 
+               		"label" => "สั่งซื้อ", 
+               		"data" => "action=buy&itemid=123" 
+            		], 
+            	[
+                "type" => "postback", 
+                "label" => "เพิ่มลงรถเข็น", 
+                "data" => "action=add&itemid=123" 
+               	], 
+            	[
+                "type" => "uri", 
+                "label" => "อ่านรายละเอียด", 
+                "uri" => "https://www.google.com" 
+                ] 
+            ] 
+	]; 
 	  
   }
   else if(strtoupper($_msg) == "MDB1")
